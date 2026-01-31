@@ -12,7 +12,7 @@ This roadmap delivers a real-time live feed exposing Claude Code sessions to the
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Event Capture Infrastructure** - Hook captures events securely and pushes to Convex
+- [x] **Phase 1: Event Capture Infrastructure** - Hook captures events securely and pushes to Convex
 - [ ] **Phase 2: Core Feed Display** - Real-time event stream with basic styling and connection status
 - [ ] **Phase 3: Layered Display & Projects** - Progressive disclosure and project filtering
 - [ ] **Phase 4: Session Features** - Session boundaries, stats, and agent hierarchy
@@ -33,8 +33,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans (Wave 1: parallel)
 
 Plans:
-- [ ] 01-01-PLAN.md - Convex event backend (schema, HTTP endpoint, mutation)
-- [ ] 01-02-PLAN.md - Claude Code hook (capture, filter, POST)
+- [x] 01-01-PLAN.md - Convex event backend (schema, HTTP endpoint, mutation)
+- [x] 01-02-PLAN.md - Claude Code hook (capture, filter, POST)
 
 ### Phase 2: Core Feed Display
 **Goal**: Users can see a real-time event stream with visual distinction between event types
@@ -123,7 +123,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Event Capture Infrastructure | 0/2 | Planned | - |
+| 1. Event Capture Infrastructure | 2/2 | Complete | 2026-01-31 |
 | 2. Core Feed Display | 0/2 | Not started | - |
 | 3. Layered Display & Projects | 0/2 | Not started | - |
 | 4. Session Features | 0/2 | Not started | - |

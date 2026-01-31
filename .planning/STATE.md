@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2025-01-31)
 
 **Core value:** The live feed - real-time Claude Code sessions with layered display (summary + technical depth)
-**Current focus:** Phase 1 - Event Capture Infrastructure
+**Current focus:** Phase 2 - Core Feed Display
 
 ## Current Position
 
-Phase: 1 of 6 (Event Capture Infrastructure)
-Plan: 2 of 2 in current phase
-Status: Phase complete
-Last activity: 2026-02-01 - Completed 01-02-PLAN.md
+Phase: 2 of 6 (Core Feed Display)
+Plan: 0 of TBD in current phase
+Status: Ready to plan
+Last activity: 2026-01-31 - Phase 1 verified and complete
 
-Progress: [##--------] 17%
+Progress: [█░░░░░░░░░] 17%
 
 ## Performance Metrics
 
@@ -53,7 +53,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- Update .agentstype.json with actual Convex URL after deployment
+None — .agentstype.json already has correct Convex URL.
 
 ### Blockers/Concerns
 
@@ -61,6 +61,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-01 00:06
-Stopped at: Completed 01-02-PLAN.md (Phase 1 complete)
+Last session: 2026-01-31
+Stopped at: Phase 1 verified, ready for Phase 2
 Resume file: None

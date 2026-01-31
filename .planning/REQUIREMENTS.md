@@ -127,11 +127,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CAPT-01 | Phase 1 | Pending |
-| CAPT-02 | Phase 1 | Pending |
-| CAPT-03 | Phase 1 | Pending |
-| CAPT-04 | Phase 1 | Pending |
-| CAPT-05 | Phase 1 | Pending |
+| CAPT-01 | Phase 1 | Complete |
+| CAPT-02 | Phase 1 | Complete |
+| CAPT-03 | Phase 1 | Complete |
+| CAPT-04 | Phase 1 | Complete |
+| CAPT-05 | Phase 1 | Complete |
 | FEED-01 | Phase 2 | Pending |
 | FEED-02 | Phase 2 | Pending |
 | FEED-03 | Phase 2 | Pending |
