@@ -30,11 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Sensitive information (API keys, tokens, passwords) is filtered before leaving local machine
   3. Events appear in Convex database within seconds of tool use
   4. Project is correctly derived from working directory
-**Plans**: TBD
+**Plans**: 2 plans (Wave 1: parallel)
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md - Convex event backend (schema, HTTP endpoint, mutation)
+- [ ] 01-02-PLAN.md - Claude Code hook (capture, filter, POST)
 
 ### Phase 2: Core Feed Display
 **Goal**: Users can see a real-time event stream with visual distinction between event types
@@ -123,7 +123,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Event Capture Infrastructure | 0/2 | Not started | - |
+| 1. Event Capture Infrastructure | 0/2 | Planned | - |
 | 2. Core Feed Display | 0/2 | Not started | - |
 | 3. Layered Display & Projects | 0/2 | Not started | - |
 | 4. Session Features | 0/2 | Not started | - |
