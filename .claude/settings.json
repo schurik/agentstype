@@ -2,5 +2,14 @@
   "enabledPlugins": {
     "claude-md-management@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true
+  },
+  "hooks": {
+    "PreToolUse": [".claude/hooks/agentstype-hook.sh"],
+    "PostToolUse": [".claude/hooks/agentstype-hook.sh"],
+    "SessionStart": [".claude/hooks/agentstype-hook.sh"],
+    "SessionEnd": [".claude/hooks/agentstype-hook.sh"],
+    "UserPromptSubmit": [".claude/hooks/agentstype-hook.sh"],
+    "Stop": [".claude/hooks/agentstype-hook.sh"],
+    "Notification": [".claude/hooks/agentstype-hook.sh"]
   }
 }
