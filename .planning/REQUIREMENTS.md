@@ -1,13 +1,13 @@
 # Requirements: agentstype.dev
 
 **Defined:** 2025-01-31
-**Core Value:** The live feed — real-time Claude Code sessions with layered display (summary + technical depth)
+**Core Value:** The live feed - real-time Claude Code sessions with layered display (summary + technical depth)
 
 ## v1 Requirements
 
 Requirements for initial release. Each maps to roadmap phases.
 
-### Live Feed — Core Display
+### Live Feed - Core Display
 
 - [ ] **FEED-01**: Real-time event stream displays events as they happen
 - [ ] **FEED-02**: Each event shows timestamp (relative and absolute)
@@ -15,34 +15,34 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **FEED-04**: Event type styling visually distinguishes reads/writes/bash/errors
 - [ ] **FEED-05**: Session boundaries show when sessions start/end with duration
 - [ ] **FEED-06**: Active agents panel shows orchestrator + spawned subagents
-- [ ] **FEED-07**: Agent hierarchy displays as collapsible tree (orchestrator → subagents)
+- [ ] **FEED-07**: Agent hierarchy displays as collapsible tree (orchestrator -> subagents)
 - [ ] **FEED-08**: "Thinking" indicator shows when Claude is processing (no event yet)
 
-### Live Feed — Layered Display
+### Live Feed - Layered Display
 
 - [ ] **LAYER-01**: Events show summary by default (rule-based, not AI)
 - [ ] **LAYER-02**: Events expand to show full technical details on click
 - [ ] **LAYER-03**: Technical details include tool name, inputs, outputs
 - [ ] **LAYER-04**: "Currently" one-liner at top summarizes current activity
 
-### Live Feed — Performance
+### Live Feed - Performance
 
 - [ ] **PERF-01**: Event batching groups rapid events ("Read 15 files" expandable)
 - [ ] **PERF-02**: Filter dropdown allows filtering by event type
 - [ ] **PERF-03**: Virtualized list handles 100+ events without performance hit
 
-### Live Feed — Session Features
+### Live Feed - Session Features
 
 - [ ] **SESS-01**: Session goal (initial prompt) pinned at top of session
 - [ ] **SESS-02**: Session stats shown on completion (duration, event count, files, commits)
 - [ ] **SESS-03**: Token/cost counter displays tokens consumed and estimated cost
 - [ ] **SESS-04**: Commit markers highlight git commits as milestones
 
-### Live Feed — Social
+### Live Feed - Social
 
 - [ ] **SOCL-01**: Viewer count shows how many people are watching
 
-### Live Feed — Project Filtering
+### Live Feed - Project Filtering
 
 - [ ] **PROJ-01**: Projects auto-discovered from Claude Code session cwd
 - [ ] **PROJ-02**: Project name derived from folder name
@@ -57,19 +57,19 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **CAPT-04**: Events pushed to Convex HTTP endpoint
 - [ ] **CAPT-05**: Convex broadcasts events to connected clients in real-time
 
-### Pages — Home
+### Pages - Home
 
 - [ ] **HOME-01**: Hero section with tagline and subheader
 - [ ] **HOME-02**: Brief bio intro
 - [ ] **HOME-03**: Live indicator shows if currently coding
 - [ ] **HOME-04**: Latest event preview with link to full feed
 
-### Pages — Live Feed
+### Pages - Live Feed
 
 - [ ] **LIVE-01**: Full real-time stream with all feed features
 - [ ] **LIVE-02**: Project filter accessible from this page
 
-### Pages — About
+### Pages - About
 
 - [ ] **ABOUT-01**: Full bio text
 - [ ] **ABOUT-02**: GitHub link
@@ -88,18 +88,18 @@ Requirements for initial release. Each maps to roadmap phases.
 
 Deferred to future release. Tracked but not in current roadmap.
 
-### Live Feed — Rich Content
+### Live Feed - Rich Content
 
 - **RICH-01**: Code diff previews with syntax highlighting
-- **RICH-02**: Error → Resolution visual linking
+- **RICH-02**: Error -> Resolution visual linking
 
-### Live Feed — Advanced
+### Live Feed - Advanced
 
 - **ADV-01**: Pause/resume stream for viewers
 - **ADV-02**: Time-lapse replay of past sessions at variable speed
 - **ADV-03**: File activity indicator ("hot" files)
 
-### Event Capture — AI
+### Event Capture - AI
 
 - **AI-01**: AI-generated plain English summaries via Claude skill
 
@@ -127,13 +127,56 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (To be populated by roadmapper) | | |
+| CAPT-01 | Phase 1 | Pending |
+| CAPT-02 | Phase 1 | Pending |
+| CAPT-03 | Phase 1 | Pending |
+| CAPT-04 | Phase 1 | Pending |
+| CAPT-05 | Phase 1 | Pending |
+| FEED-01 | Phase 2 | Pending |
+| FEED-02 | Phase 2 | Pending |
+| FEED-03 | Phase 2 | Pending |
+| FEED-04 | Phase 2 | Pending |
+| DESGN-01 | Phase 2 | Pending |
+| DESGN-02 | Phase 2 | Pending |
+| DESGN-03 | Phase 2 | Pending |
+| DESGN-04 | Phase 2 | Pending |
+| DESGN-05 | Phase 2 | Pending |
+| LAYER-01 | Phase 3 | Pending |
+| LAYER-02 | Phase 3 | Pending |
+| LAYER-03 | Phase 3 | Pending |
+| LAYER-04 | Phase 3 | Pending |
+| PROJ-01 | Phase 3 | Pending |
+| PROJ-02 | Phase 3 | Pending |
+| PROJ-03 | Phase 3 | Pending |
+| PROJ-04 | Phase 3 | Pending |
+| FEED-05 | Phase 4 | Pending |
+| FEED-06 | Phase 4 | Pending |
+| FEED-07 | Phase 4 | Pending |
+| FEED-08 | Phase 4 | Pending |
+| SESS-01 | Phase 4 | Pending |
+| SESS-02 | Phase 4 | Pending |
+| SESS-03 | Phase 4 | Pending |
+| SESS-04 | Phase 4 | Pending |
+| HOME-01 | Phase 5 | Pending |
+| HOME-02 | Phase 5 | Pending |
+| HOME-03 | Phase 5 | Pending |
+| HOME-04 | Phase 5 | Pending |
+| LIVE-01 | Phase 5 | Pending |
+| LIVE-02 | Phase 5 | Pending |
+| ABOUT-01 | Phase 5 | Pending |
+| ABOUT-02 | Phase 5 | Pending |
+| ABOUT-03 | Phase 5 | Pending |
+| DESGN-06 | Phase 5 | Pending |
+| PERF-01 | Phase 6 | Pending |
+| PERF-02 | Phase 6 | Pending |
+| PERF-03 | Phase 6 | Pending |
+| SOCL-01 | Phase 6 | Pending |
 
 **Coverage:**
-- v1 requirements: 35 total
-- Mapped to phases: 0
-- Unmapped: 35 ⚠️
+- v1 requirements: 44 total
+- Mapped to phases: 44
+- Unmapped: 0
 
 ---
 *Requirements defined: 2025-01-31*
-*Last updated: 2025-01-31 after initial definition*
+*Last updated: 2025-01-31 after roadmap creation*
