@@ -12,14 +12,39 @@ export default defineSchema({
     type: v.string(),
     timestamp: v.number(),
 
-    // Tool-specific (optional)
+    // Tool-specific (for pre_tool_use, post_tool_use, post_tool_use_failure, permission_request)
     tool: v.optional(v.string()),
     toolInput: v.optional(v.any()),
-    toolOutput: v.optional(v.any()),
+    toolResponse: v.optional(v.any()),
+    toolUseId: v.optional(v.string()),
+    success: v.optional(v.boolean()),
 
-    // Content (optional)
+    // Error info (for post_tool_use_failure)
+    error: v.optional(v.string()),
+    isInterrupt: v.optional(v.boolean()),
+
+    // User prompt (for user_prompt_submit)
     prompt: v.optional(v.string()),
+
+    // Response (for stop, subagent_stop)
     response: v.optional(v.string()),
+    stopHookActive: v.optional(v.boolean()),
+
+    // Session events
+    source: v.optional(v.string()), // for session_start: startup, resume, clear, compact
+    reason: v.optional(v.string()), // for session_end: clear, logout, etc.
+
+    // Notification (for notification)
+    message: v.optional(v.string()),
+    notificationType: v.optional(v.string()),
+
+    // Pre-compact (for pre_compact)
+    trigger: v.optional(v.string()), // manual, auto
+    customInstructions: v.optional(v.string()),
+
+    // Subagent (for subagent_start, subagent_stop)
+    agentId: v.optional(v.string()),
+    agentType: v.optional(v.string()),
 
     // Metadata
     cwd: v.optional(v.string()),
