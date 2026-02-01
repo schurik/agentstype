@@ -46,11 +46,12 @@ Plans:
   3. Event types (reads, writes, bash, errors) are visually distinct
   4. Timestamps show both relative ("2 min ago") and absolute on hover
   5. Dark mode styling with monospace typography and clean aesthetic
-**Plans**: TBD
+**Plans**: 3 plans (Wave 1 -> Wave 2 -> Wave 3)
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md - Foundation & hooks (dependencies, dark mode, useConnectionStatus, useRelativeTime, useAutoScroll)
+- [ ] 02-02-PLAN.md - Feed components (EventCard, ConnectionStatus, Header, NewEventsIndicator, EventFeed)
+- [ ] 02-03-PLAN.md - Page integration & verification (main page, visual verification)
 
 ### Phase 3: Layered Display & Projects
 **Goal**: Users can expand events for technical details and filter by project
@@ -124,7 +125,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Event Capture Infrastructure | 2/2 | Complete | 2026-01-31 |
-| 2. Core Feed Display | 0/2 | Not started | - |
+| 2. Core Feed Display | 0/3 | Not started | - |
 | 3. Layered Display & Projects | 0/2 | Not started | - |
 | 4. Session Features | 0/2 | Not started | - |
 | 5. Pages & Navigation | 0/2 | Not started | - |
