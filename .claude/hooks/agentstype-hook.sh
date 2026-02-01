@@ -237,16 +237,19 @@ fi
 # =============================================================================
 
 case "$hook_event_name" in
-  PreToolUse)       event_type="pre_tool_use" ;;
-  PostToolUse)      event_type="post_tool_use" ;;
-  Stop)             event_type="stop" ;;
-  SubagentStop)     event_type="subagent_stop" ;;
-  SessionStart)     event_type="session_start" ;;
-  SessionEnd)       event_type="session_end" ;;
-  UserPromptSubmit) event_type="user_prompt_submit" ;;
-  Notification)     event_type="notification" ;;
-  PreCompact)       event_type="pre_compact" ;;
-  *)                event_type="unknown" ;;
+  PreToolUse)         event_type="pre_tool_use" ;;
+  PostToolUse)        event_type="post_tool_use" ;;
+  PostToolUseFailure) event_type="post_tool_use_failure" ;;
+  PermissionRequest)  event_type="permission_request" ;;
+  Stop)               event_type="stop" ;;
+  SubagentStart)      event_type="subagent_start" ;;
+  SubagentStop)       event_type="subagent_stop" ;;
+  SessionStart)       event_type="session_start" ;;
+  SessionEnd)         event_type="session_end" ;;
+  UserPromptSubmit)   event_type="user_prompt_submit" ;;
+  Notification)       event_type="notification" ;;
+  PreCompact)         event_type="pre_compact" ;;
+  *)                  event_type="unknown" ;;
 esac
 
 # =============================================================================
@@ -484,6 +487,101 @@ case "$event_type" in
         trigger: $trigger,
         customInstructions: $customInstructions,
         redacted: $redacted
+      }')
+    ;;
+
+  permission_request)
+    tool_name=$(echo "$input" | "$JQ" -r '.tool_name // "unknown"')
+    tool_input_raw=$(echo "$input" | "$JQ" -c '.tool_input // {}')
+
+    # Filter tool input
+    tool_input=$(filter_tool_data "$tool_input_raw" "$tool_name")
+
+    event=$("$JQ" -n -c \
+      --arg id "$event_id" \
+      --argjson timestamp "$timestamp" \
+      --arg type "$event_type" \
+      --arg sessionId "$session_id" \
+      --arg projectName "$PROJECT_NAME" \
+      --arg cwd "$cwd" \
+      --arg tool "$tool_name" \
+      --argjson toolInput "$tool_input" \
+      --argjson redacted "$REDACTED" \
+      '{
+        eventId: $id,
+        timestamp: $timestamp,
+        type: $type,
+        sessionId: $sessionId,
+        projectName: $projectName,
+        cwd: $cwd,
+        tool: $tool,
+        toolInput: $toolInput,
+        redacted: $redacted
+      }')
+    ;;
+
+  post_tool_use_failure)
+    tool_name=$(echo "$input" | "$JQ" -r '.tool_name // "unknown"')
+    tool_input_raw=$(echo "$input" | "$JQ" -c '.tool_input // {}')
+    tool_use_id=$(echo "$input" | "$JQ" -r '.tool_use_id // ""')
+    error_raw=$(echo "$input" | "$JQ" -r '.error // ""')
+    is_interrupt=$(echo "$input" | "$JQ" -r '.is_interrupt // false')
+
+    # Filter tool input and error
+    tool_input=$(filter_tool_data "$tool_input_raw" "$tool_name")
+    error=$(filter_secrets "$error_raw")
+
+    event=$("$JQ" -n -c \
+      --arg id "$event_id" \
+      --argjson timestamp "$timestamp" \
+      --arg type "$event_type" \
+      --arg sessionId "$session_id" \
+      --arg projectName "$PROJECT_NAME" \
+      --arg cwd "$cwd" \
+      --arg tool "$tool_name" \
+      --argjson toolInput "$tool_input" \
+      --arg toolUseId "$tool_use_id" \
+      --arg error "$error" \
+      --argjson isInterrupt "$is_interrupt" \
+      --argjson redacted "$REDACTED" \
+      '{
+        eventId: $id,
+        timestamp: $timestamp,
+        type: $type,
+        sessionId: $sessionId,
+        projectName: $projectName,
+        cwd: $cwd,
+        tool: $tool,
+        toolInput: $toolInput,
+        toolUseId: $toolUseId,
+        error: $error,
+        isInterrupt: $isInterrupt,
+        redacted: $redacted
+      }')
+    ;;
+
+  subagent_start)
+    agent_id=$(echo "$input" | "$JQ" -r '.agent_id // ""')
+    agent_type=$(echo "$input" | "$JQ" -r '.agent_type // "unknown"')
+
+    event=$("$JQ" -n -c \
+      --arg id "$event_id" \
+      --argjson timestamp "$timestamp" \
+      --arg type "$event_type" \
+      --arg sessionId "$session_id" \
+      --arg projectName "$PROJECT_NAME" \
+      --arg cwd "$cwd" \
+      --arg agentId "$agent_id" \
+      --arg agentType "$agent_type" \
+      '{
+        eventId: $id,
+        timestamp: $timestamp,
+        type: $type,
+        sessionId: $sessionId,
+        projectName: $projectName,
+        cwd: $cwd,
+        agentId: $agentId,
+        agentType: $agentType
       }')
     ;;
 
