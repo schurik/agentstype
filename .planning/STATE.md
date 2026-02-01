@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 2 of 6 (Core Feed Display)
-Plan: 1 of TBD in current phase
+Plan: 2 of TBD in current phase
 Status: In progress
-Last activity: 2026-02-01 - Completed 02-01-PLAN.md
+Last activity: 2026-02-01 - Completed 02-02-PLAN.md
 
-Progress: [██░░░░░░░░] 25%
+Progress: [███░░░░░░░] 30%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 2.7 min
-- Total execution time: 8 min
+- Total plans completed: 4
+- Average duration: 2.5 min
+- Total execution time: 10 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-event-capture | 2 | 5 min | 2.5 min |
-| 02-core-feed-display | 1 | 3 min | 3 min |
+| 02-core-feed-display | 2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (3 min), 02-01 (3 min)
+- Last 5 plans: 01-01 (2 min), 01-02 (3 min), 02-01 (3 min), 02-02 (2 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -54,6 +54,9 @@ Recent decisions affecting current work:
 | Force dark mode via :root and className="dark" | Not media query dependent, consistent dark appearance | 02-01 |
 | Monospace font as body default | Terminal-like feel per CONTEXT.md | 02-01 |
 | Idle detection deferred | useConnectionStatus returns "live" when connected; refine later | 02-01 |
+| Reverse DESC results for chat-like display | Events from Convex come newest first, reverse for newest at bottom | 02-02 |
+| Track initial event IDs for animation | Only animate events that arrive after initial page load | 02-02 |
+| Middle truncation for paths | Long paths as first/.../last preserves context | 02-02 |
 
 ### Pending Todos
 
@@ -66,5 +69,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-01
-Stopped at: Completed 02-01-PLAN.md
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
