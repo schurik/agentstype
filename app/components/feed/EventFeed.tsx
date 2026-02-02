@@ -88,6 +88,8 @@ export function EventFeed() {
   // Events are already in DESC order (newest first) from Convex
   return (
     <div className="flex flex-col h-full overflow-hidden">
+      {/* New events banner - above scroll container for visibility */}
+      <NewEventsIndicator count={newEventCount} onClick={scrollToTop} />
       <div
         ref={containerRef}
         className="flex-1 overflow-y-auto px-4 py-2 space-y-1"
@@ -100,7 +102,6 @@ export function EventFeed() {
           />
         ))}
       </div>
-      <NewEventsIndicator count={newEventCount} onClick={scrollToTop} />
     </div>
   );
 }
