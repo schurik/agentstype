@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 2 of 6 (Core Feed Display)
-Plan: 2 of TBD in current phase
-Status: In progress
-Last activity: 2026-02-01 - Completed 02-02-PLAN.md
+Plan: 3 of 3 in current phase
+Status: Phase complete
+Last activity: 2026-02-02 - Completed 02-03-PLAN.md (Phase 2 complete)
 
-Progress: [███░░░░░░░] 30%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 2.5 min
-- Total execution time: 10 min
+- Total plans completed: 5
+- Average duration: 3 min
+- Total execution time: 15 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-event-capture | 2 | 5 min | 2.5 min |
-| 02-core-feed-display | 2 | 5 min | 2.5 min |
+| 02-core-feed-display | 3 | 10 min | 3.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (2 min), 01-02 (3 min), 02-01 (3 min), 02-02 (2 min)
+- Last 5 plans: 01-02 (3 min), 02-01 (3 min), 02-02 (2 min), 02-03 (5 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -57,6 +57,9 @@ Recent decisions affecting current work:
 | Reverse DESC results for chat-like display | Events from Convex come newest first, reverse for newest at bottom | 02-02 |
 | Track initial event IDs for animation | Only animate events that arrive after initial page load | 02-02 |
 | Middle truncation for paths | Long paths as first/.../last preserves context | 02-02 |
+| Newest events at top | Simpler than auto-scroll to bottom, more natural for feed | 02-03 |
+| Track new events by ID set | Query limit keeps count at 100, so track by IDs instead | 02-03 |
+| Banner above scroll container | Guarantees visibility when new events arrive | 02-03 |
 
 ### Pending Todos
 
@@ -68,6 +71,7 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-01
-Stopped at: Completed 02-02-PLAN.md
+Last session: 2026-02-02
+Stopped at: Completed 02-03-PLAN.md (Phase 2 complete)
 Resume file: None
+Next: Phase 3 - Layered Display & Projects
