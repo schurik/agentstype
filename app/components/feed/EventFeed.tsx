@@ -4,8 +4,6 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState, useEffect } from "react";
 import { EventCard } from "./EventCard";
-import { NewEventsIndicator } from "./NewEventsIndicator";
-import { useAutoScroll } from "./hooks/useAutoScroll";
 
 /**
  * Loading skeleton for event cards during initial data fetch.
@@ -22,12 +20,11 @@ function EventSkeleton() {
 }
 
 /**
- * Main event feed container with real-time subscription and smart auto-scroll.
+ * Main event feed container with real-time subscription.
  *
  * Features:
  * - Real-time event subscription via Convex useQuery
- * - Smart auto-scroll: scrolls to new events only when at bottom
- * - New events indicator when user has scrolled up
+ * - Newest events appear at top (no auto-scroll needed)
  * - Loading and empty states
  * - Animation for new events (after initial load)
  */
@@ -48,13 +45,6 @@ export function EventFeed() {
       setHasInitialLoad(true);
     }
   }, [events, hasInitialLoad]);
-
-  // For chat-like display with newest at bottom, reverse the DESC-ordered results
-  const displayEvents = events ? [...events].reverse() : [];
-
-  // Smart auto-scroll behavior
-  const { bottomRef, sentinelRef, newItemCount, scrollToBottom } =
-    useAutoScroll(displayEvents, initialEventIds.size);
 
   // Loading state
   if (events === undefined) {
@@ -86,22 +76,18 @@ export function EventFeed() {
     );
   }
 
+  // Events are already in DESC order (newest first) from Convex
   return (
     <div className="flex flex-col h-full overflow-hidden">
       <div className="flex-1 overflow-y-auto px-4 py-2 space-y-1">
-        {displayEvents.map((event) => (
+        {events.map((event) => (
           <EventCard
             key={event._id}
             event={event}
             isNew={hasInitialLoad && !initialEventIds.has(event._id)}
           />
         ))}
-        {/* Sentinel element for intersection observer */}
-        <div ref={sentinelRef} className="h-1" />
-        {/* Bottom anchor for scrollIntoView */}
-        <div ref={bottomRef} />
       </div>
-      <NewEventsIndicator count={newItemCount} onClick={scrollToBottom} />
     </div>
   );
 }
