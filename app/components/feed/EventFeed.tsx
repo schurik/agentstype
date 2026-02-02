@@ -4,6 +4,8 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState, useEffect } from "react";
 import { EventCard } from "./EventCard";
+import { NewEventsIndicator } from "./NewEventsIndicator";
+import { useNewEventsIndicator } from "./hooks/useNewEventsIndicator";
 
 /**
  * Loading skeleton for event cards during initial data fetch.
@@ -24,7 +26,8 @@ function EventSkeleton() {
  *
  * Features:
  * - Real-time event subscription via Convex useQuery
- * - Newest events appear at top (no auto-scroll needed)
+ * - Newest events appear at top
+ * - "X new events" badge when scrolled down and new events arrive
  * - Loading and empty states
  * - Animation for new events (after initial load)
  */
@@ -45,6 +48,12 @@ export function EventFeed() {
       setHasInitialLoad(true);
     }
   }, [events, hasInitialLoad]);
+
+  // Track new events when user has scrolled down
+  const { containerRef, newEventCount, scrollToTop } = useNewEventsIndicator(
+    events?.length ?? 0,
+    initialEventIds.size
+  );
 
   // Loading state
   if (events === undefined) {
@@ -79,7 +88,10 @@ export function EventFeed() {
   // Events are already in DESC order (newest first) from Convex
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <div className="flex-1 overflow-y-auto px-4 py-2 space-y-1">
+      <div
+        ref={containerRef}
+        className="flex-1 overflow-y-auto px-4 py-2 space-y-1"
+      >
         {events.map((event) => (
           <EventCard
             key={event._id}
@@ -88,6 +100,7 @@ export function EventFeed() {
           />
         ))}
       </div>
+      <NewEventsIndicator count={newEventCount} onClick={scrollToTop} />
     </div>
   );
 }
