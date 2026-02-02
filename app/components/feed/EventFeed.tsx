@@ -50,10 +50,8 @@ export function EventFeed() {
   }, [events, hasInitialLoad]);
 
   // Track new events when user has scrolled down
-  const { containerRef, newEventCount, scrollToTop } = useNewEventsIndicator(
-    events?.length ?? 0,
-    initialEventIds.size
-  );
+  const eventIds = events?.map(e => e._id) ?? [];
+  const { containerRef, newEventCount, scrollToTop } = useNewEventsIndicator(eventIds);
 
   // Loading state
   if (events === undefined) {
