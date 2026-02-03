@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 3 of 6 (Layered Display & Projects)
-Plan: 3 of 3 in current phase
+Plan: 4 of 4 in current phase
 Status: Phase complete
-Last activity: 2026-02-03 - Completed 03-03-PLAN.md
+Last activity: 2026-02-03 - Completed 03-04-PLAN.md
 
 Progress: [████████░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: 3 min
-- Total execution time: 23 min
+- Total execution time: 27 min
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [████████░░] 80%
 |-------|-------|-------|----------|
 | 01-event-capture | 2 | 5 min | 2.5 min |
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
-| 03-layered-display-projects | 3 | 8 min | 2.7 min |
+| 03-layered-display-projects | 4 | 12 min | 3.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-03 (5 min), 03-01 (2 min), 03-02 (3 min), 03-03 (3 min)
+- Last 5 plans: 03-01 (2 min), 03-02 (3 min), 03-03 (3 min), 03-04 (4 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -72,6 +72,8 @@ Recent decisions affecting current work:
 | 5-minute activity threshold | Projects show green pulse if active within 5 min | 03-03 |
 | Auto-select most recent project | If no project selected, auto-select first | 03-03 |
 | Cmd/Ctrl+B keyboard shortcut | Power user shortcut for sidebar toggle | 03-03 |
+| Callback pattern for expand/collapse | EventFeed exposes handlers via callback, Header wires to buttons | 03-04 |
+| Suspense boundary for URL state | useSearchParams/nuqs needs Suspense for SSR hydration | 03-04 |
 
 ### Pending Todos
 
@@ -84,6 +86,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 03-03-PLAN.md
+Stopped at: Completed 03-04-PLAN.md (Phase 3 complete)
 Resume file: None
-Next: Phase 04 - Polish & UX (phase 03 complete)
+Next: Phase 04 - Session Features
