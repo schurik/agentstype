@@ -1,5 +1,5 @@
 ---
-status: complete
+status: diagnosed
 phase: 04-session-features
 source: 04-01-SUMMARY.md, 04-02-SUMMARY.md, 04-03-SUMMARY.md, 04-04-SUMMARY.md
 started: 2026-02-03T18:30:00Z
@@ -69,7 +69,14 @@ skipped: 0
   reason: "User reported: I have the impression that the event count, the counter shows only the filtered max 100 events, not all events which were captured through the whole session."
   severity: major
   test: 7
-  root_cause: ""
-  artifacts: []
-  missing: []
-  debug_session: ""
+  root_cause: "useSessionStats computes eventCount by counting the events array passed from EventFeed, which is limited to 100 events by the listEvents query's limit: 100 parameter"
+  artifacts:
+    - path: "app/hooks/useSessionStats.ts"
+      issue: "Computes eventCount from limited input array"
+    - path: "app/components/feed/EventFeed.tsx"
+      issue: "Passes limited events to stats hook"
+    - path: "convex/events.ts"
+      issue: "listEvents applies 100 limit; listSessionsForProject already has accurate counts"
+  missing:
+    - "Use existing eventCount from listSessionsForProject instead of computing from limited events"
+  debug_session: ".planning/debug/session-stats-event-count.md"
