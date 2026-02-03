@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2025-01-31)
 
 **Core value:** The live feed - real-time Claude Code sessions with layered display (summary + technical depth)
-**Current focus:** Phase 2 - Core Feed Display
+**Current focus:** Phase 3 - Layered Display & Projects
 
 ## Current Position
 
-Phase: 2 of 6 (Core Feed Display)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-02-02 - Completed 02-03-PLAN.md (Phase 2 complete)
+Phase: 3 of 6 (Layered Display & Projects)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-03 - Completed 03-01-PLAN.md
 
-Progress: [█████░░░░░] 50%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 3 min
-- Total execution time: 15 min
+- Total execution time: 17 min
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [█████░░░░░] 50%
 |-------|-------|-------|----------|
 | 01-event-capture | 2 | 5 min | 2.5 min |
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
+| 03-layered-display-projects | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (3 min), 02-01 (3 min), 02-02 (2 min), 02-03 (5 min)
+- Last 5 plans: 02-01 (3 min), 02-02 (2 min), 02-03 (5 min), 03-01 (2 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -60,6 +61,9 @@ Recent decisions affecting current work:
 | Newest events at top | Simpler than auto-scroll to bottom, more natural for feed | 02-03 |
 | Track new events by ID set | Query limit keeps count at 100, so track by IDs instead | 02-03 |
 | Banner above scroll container | Guarantees visibility when new events arrive | 02-03 |
+| NuqsAdapter inside ConvexClientProvider | Proper provider nesting order for URL state | 03-01 |
+| parseAsString for project filter | null when no param, string when set | 03-01 |
+| Aggregate pattern for listProjects | Simple approach, can optimize with index later | 03-01 |
 
 ### Pending Todos
 
@@ -71,7 +75,7 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-02
-Stopped at: Completed 02-03-PLAN.md (Phase 2 complete)
+Last session: 2026-02-03
+Stopped at: Completed 03-01-PLAN.md
 Resume file: None
-Next: Phase 3 - Layered Display & Projects
+Next: 03-02-PLAN.md - Project filter UI and event expansion
