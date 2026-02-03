@@ -18,11 +18,15 @@ export interface SessionStats {
  *
  * @param events - Array of events (from listEvents query)
  * @param sessionId - Session ID to filter and compute stats for
+ * @param totalEventCount - Optional total event count for the session (from listSessionsForProject).
+ *                          If provided, used instead of computing from events array, which may be
+ *                          limited by query pagination.
  * @returns SessionStats object or null if no events/sessionId
  */
 export function useSessionStats(
   events: Event[] | undefined,
-  sessionId: string | null
+  sessionId: string | null,
+  totalEventCount?: number
 ): SessionStats | null {
   return useMemo(() => {
     if (!events || !sessionId) return null
@@ -42,7 +46,9 @@ export function useSessionStats(
     const durationMs = (endTime ?? 0) - (startTime ?? 0)
 
     // Event count (excluding session_start/session_end)
-    const eventCount = sessionEvents.filter(
+    // Use totalEventCount if provided (accurate count from session query),
+    // otherwise fall back to computing from events array (may be limited by pagination)
+    const eventCount = totalEventCount ?? sessionEvents.filter(
       (e) => !['session_start', 'session_end'].includes(e.type)
     ).length
 
@@ -74,5 +80,5 @@ export function useSessionStats(
       startTime,
       endTime,
     }
-  }, [events, sessionId])
+  }, [events, sessionId, totalEventCount])
 }
