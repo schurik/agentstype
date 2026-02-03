@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Event Capture Infrastructure** - Hook captures events securely and pushes to Convex
 - [x] **Phase 2: Core Feed Display** - Real-time event stream with basic styling and connection status
-- [ ] **Phase 3: Layered Display & Projects** - Progressive disclosure and project filtering
+- [x] **Phase 3: Layered Display & Projects** - Progressive disclosure and project filtering
 - [ ] **Phase 4: Session Features** - Session boundaries, stats, and agent hierarchy
 - [ ] **Phase 5: Pages & Navigation** - Home, Live Feed, and About pages with full design system
 - [ ] **Phase 6: Performance & Scale** - Event batching, virtualization, and viewer count
@@ -66,10 +66,10 @@ Plans:
 **Plans**: 4 plans (Wave 1 -> Wave 2 -> Wave 3)
 
 Plans:
-- [ ] 03-01-PLAN.md - Dependencies & URL state (nuqs, react-collapsed, shiki, NuqsAdapter, listProjects query)
-- [ ] 03-02-PLAN.md - Expand/collapse EventCard (CodeBlock, ExpandedContent, react-collapsed integration)
-- [ ] 03-03-PLAN.md - Project sidebar & CurrentlyIndicator (ProjectSidebar, useSidebarCollapse, CurrentlyIndicator)
-- [ ] 03-04-PLAN.md - Page integration & verification (/live route, wiring, visual verification)
+- [x] 03-01-PLAN.md - Dependencies & URL state (nuqs, react-collapsed, shiki, NuqsAdapter, listProjects query)
+- [x] 03-02-PLAN.md - Expand/collapse EventCard (CodeBlock, ExpandedContent, react-collapsed integration)
+- [x] 03-03-PLAN.md - Project sidebar & CurrentlyIndicator (ProjectSidebar, useSidebarCollapse, CurrentlyIndicator)
+- [x] 03-04-PLAN.md - Page integration & verification (/live route, wiring, visual verification)
 
 ### Phase 4: Session Features
 **Goal**: Users can see session boundaries, stats, and agent relationships
@@ -128,7 +128,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Event Capture Infrastructure | 2/2 | Complete | 2026-01-31 |
 | 2. Core Feed Display | 3/3 | Complete | 2026-02-02 |
-| 3. Layered Display & Projects | 0/4 | Not started | - |
+| 3. Layered Display & Projects | 4/4 | Complete | 2026-02-03 |
 | 4. Session Features | 0/2 | Not started | - |
 | 5. Pages & Navigation | 0/2 | Not started | - |
 | 6. Performance & Scale | 0/2 | Not started | - |
