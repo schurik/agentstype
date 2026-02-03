@@ -103,6 +103,7 @@ export const listEvents = query({
   args: {
     projectName: v.optional(v.string()),
     sessionId: v.optional(v.string()),
+    agentId: v.optional(v.string()),
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
@@ -127,6 +128,11 @@ export const listEvents = query({
     } else {
       // No filter - return most recent events across all projects
       events = await ctx.db.query("events").order("desc").take(limit);
+    }
+
+    // Post-filter by agentId if provided (no index, but fine for small datasets)
+    if (args.agentId) {
+      events = events.filter((e) => e.agentId === args.agentId);
     }
 
     return events;
@@ -158,5 +164,124 @@ export const listProjects = query({
     return Array.from(projectMap.entries())
       .map(([name, lastActivity]) => ({ name, lastActivity }))
       .sort((a, b) => b.lastActivity - a.lastActivity);
+  },
+});
+
+/**
+ * Query for listing sessions within a project with aggregated metadata.
+ * Enables sidebar session list population.
+ *
+ * @param projectName - The project to get sessions for
+ * @returns Array of session objects sorted by lastTimestamp DESC (most recent first)
+ */
+export const listSessionsForProject = query({
+  args: {
+    projectName: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // Get all events for project using index
+    const events = await ctx.db
+      .query("events")
+      .withIndex("by_project", (q) => q.eq("projectName", args.projectName))
+      .collect();
+
+    // Reduce to unique sessions with metadata
+    const sessionMap = new Map<
+      string,
+      {
+        sessionId: string;
+        firstTimestamp: number;
+        lastTimestamp: number;
+        eventCount: number;
+        goal: string | null;
+        hasEnded: boolean;
+      }
+    >();
+
+    for (const event of events) {
+      const existing = sessionMap.get(event.sessionId);
+      if (!existing) {
+        sessionMap.set(event.sessionId, {
+          sessionId: event.sessionId,
+          firstTimestamp: event.timestamp,
+          lastTimestamp: event.timestamp,
+          eventCount: 1,
+          goal:
+            event.type === "user_prompt_submit" ? event.prompt ?? null : null,
+          hasEnded: event.type === "session_end",
+        });
+      } else {
+        existing.eventCount++;
+        if (event.timestamp < existing.firstTimestamp) {
+          existing.firstTimestamp = event.timestamp;
+        }
+        if (event.timestamp > existing.lastTimestamp) {
+          existing.lastTimestamp = event.timestamp;
+        }
+        if (event.type === "user_prompt_submit" && !existing.goal) {
+          existing.goal = event.prompt ?? null;
+        }
+        if (event.type === "session_end") {
+          existing.hasEnded = true;
+        }
+      }
+    }
+
+    // Sort by most recent activity
+    return Array.from(sessionMap.values()).sort(
+      (a, b) => b.lastTimestamp - a.lastTimestamp
+    );
+  },
+});
+
+/**
+ * Query for listing agents within a session with event counts.
+ * Enables sidebar agent list population.
+ *
+ * @param sessionId - The session to get agents for
+ * @returns Array of agent objects with agentId, agentType, and eventCount
+ */
+export const listAgentsForSession = query({
+  args: {
+    sessionId: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // Get all events for session using index
+    const events = await ctx.db
+      .query("events")
+      .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
+      .collect();
+
+    // Find subagent_start events to get agents
+    const agentMap = new Map<
+      string,
+      {
+        agentId: string;
+        agentType: string | null;
+        eventCount: number;
+      }
+    >();
+
+    for (const event of events) {
+      // Register agent from subagent_start event
+      if (event.type === "subagent_start" && event.agentId) {
+        if (!agentMap.has(event.agentId)) {
+          agentMap.set(event.agentId, {
+            agentId: event.agentId,
+            agentType: event.agentType ?? null,
+            eventCount: 0,
+          });
+        }
+      }
+      // Count events per agent
+      if (event.agentId) {
+        const agent = agentMap.get(event.agentId);
+        if (agent) {
+          agent.eventCount++;
+        }
+      }
+    }
+
+    return Array.from(agentMap.values());
   },
 });
