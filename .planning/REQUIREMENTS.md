@@ -59,21 +59,21 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Pages - Home
 
-- [ ] **HOME-01**: Hero section with tagline and subheader
-- [ ] **HOME-02**: Brief bio intro
-- [ ] **HOME-03**: Live indicator shows if currently coding
-- [ ] **HOME-04**: Latest event preview with link to full feed
+- [x] **HOME-01**: Hero section with tagline and subheader
+- [x] **HOME-02**: Brief bio intro
+- [x] **HOME-03**: Live indicator shows if currently coding
+- [x] **HOME-04**: Latest event preview with link to full feed
 
 ### Pages - Live Feed
 
-- [ ] **LIVE-01**: Full real-time stream with all feed features
-- [ ] **LIVE-02**: Project filter accessible from this page
+- [x] **LIVE-01**: Full real-time stream with all feed features
+- [x] **LIVE-02**: Project filter accessible from this page
 
 ### Pages - About
 
-- [ ] **ABOUT-01**: Full bio text
-- [ ] **ABOUT-02**: GitHub link
-- [ ] **ABOUT-03**: X/Twitter link
+- [x] **ABOUT-01**: Full bio text
+- [x] **ABOUT-02**: GitHub link
+- [x] **ABOUT-03**: X/Twitter link
 
 ### Design
 
@@ -82,7 +82,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DESGN-03**: Generous whitespace
 - [x] **DESGN-04**: Sharp clean lines, no gradients
 - [x] **DESGN-05**: No generic AI illustrations or stock imagery
-- [ ] **DESGN-06**: Mobile responsive
+- [x] **DESGN-06**: Mobile responsive
 
 ## v2 Requirements
 
@@ -157,16 +157,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SESS-02 | Phase 4 | Complete |
 | SESS-03 | Phase 4 | Deferred |
 | SESS-04 | Phase 4 | Complete |
-| HOME-01 | Phase 5 | Pending |
-| HOME-02 | Phase 5 | Pending |
-| HOME-03 | Phase 5 | Pending |
-| HOME-04 | Phase 5 | Pending |
-| LIVE-01 | Phase 5 | Pending |
-| LIVE-02 | Phase 5 | Pending |
-| ABOUT-01 | Phase 5 | Pending |
-| ABOUT-02 | Phase 5 | Pending |
-| ABOUT-03 | Phase 5 | Pending |
-| DESGN-06 | Phase 5 | Pending |
+| HOME-01 | Phase 5 | Complete |
+| HOME-02 | Phase 5 | Complete |
+| HOME-03 | Phase 5 | Complete |
+| HOME-04 | Phase 5 | Complete |
+| LIVE-01 | Phase 5 | Complete |
+| LIVE-02 | Phase 5 | Complete |
+| ABOUT-01 | Phase 5 | Complete |
+| ABOUT-02 | Phase 5 | Complete |
+| ABOUT-03 | Phase 5 | Complete |
+| DESGN-06 | Phase 5 | Complete |
 | PERF-01 | Phase 6 | Pending |
 | PERF-02 | Phase 6 | Pending |
 | PERF-03 | Phase 6 | Pending |

@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Core Feed Display** - Real-time event stream with basic styling and connection status
 - [x] **Phase 3: Layered Display & Projects** - Progressive disclosure and project filtering
 - [x] **Phase 4: Session Features** - Session boundaries, stats, and agent hierarchy
-- [ ] **Phase 5: Pages & Navigation** - Home, Live Feed, and About pages with full design system
+- [x] **Phase 5: Pages & Navigation** - Home, Live Feed, and About pages with full design system
 - [ ] **Phase 6: Performance & Scale** - Event batching, virtualization, and viewer count
 
 ## Phase Details
@@ -104,9 +104,9 @@ Plans:
 **Plans**: 3 plans (Wave 1 -> Wave 2)
 
 Plans:
-- [ ] 05-01-PLAN.md — Navigation and layout (lucide-react, Navigation component, root layout integration)
-- [ ] 05-02-PLAN.md — Home page (Hero, TerminalMockup, LivePreview, FeatureCards)
-- [ ] 05-03-PLAN.md — About page and visual verification (Bio, SocialLinks, human-verify checkpoint)
+- [x] 05-01-PLAN.md — Navigation and layout (lucide-react, Navigation component, root layout integration)
+- [x] 05-02-PLAN.md — Home page (Hero, TerminalMockup, LivePreview, FeatureCards)
+- [x] 05-03-PLAN.md — About page and visual verification (Bio, SocialLinks, human-verify checkpoint)
 
 ### Phase 6: Performance & Scale
 **Goal**: Feed handles rapid events smoothly and shows social proof
@@ -134,7 +134,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Core Feed Display | 3/3 | Complete | 2026-02-02 |
 | 3. Layered Display & Projects | 4/4 | Complete | 2026-02-03 |
 | 4. Session Features | 5/5 | Complete | 2026-02-03 |
-| 5. Pages & Navigation | 0/3 | Not started | - |
+| 5. Pages & Navigation | 3/3 | Complete | 2026-02-03 |
 | 6. Performance & Scale | 0/2 | Not started | - |
 
 ---
