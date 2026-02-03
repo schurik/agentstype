@@ -61,13 +61,15 @@ Plans:
   1. Events show summary by default, expand to full technical details on click
   2. Technical details include tool name, inputs, and outputs
   3. "Currently" one-liner at top shows current activity
-  4. Projects appear in filter dropdown as they are discovered
+  4. Projects appear in filter sidebar as they are discovered
   5. URL reflects project filter (/live?project=meetrecap)
-**Plans**: TBD
+**Plans**: 4 plans (Wave 1 -> Wave 2 -> Wave 3)
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md - Dependencies & URL state (nuqs, react-collapsed, shiki, NuqsAdapter, listProjects query)
+- [ ] 03-02-PLAN.md - Expand/collapse EventCard (CodeBlock, ExpandedContent, react-collapsed integration)
+- [ ] 03-03-PLAN.md - Project sidebar & CurrentlyIndicator (ProjectSidebar, useSidebarCollapse, CurrentlyIndicator)
+- [ ] 03-04-PLAN.md - Page integration & verification (/live route, wiring, visual verification)
 
 ### Phase 4: Session Features
 **Goal**: Users can see session boundaries, stats, and agent relationships
@@ -126,7 +128,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Event Capture Infrastructure | 2/2 | Complete | 2026-01-31 |
 | 2. Core Feed Display | 3/3 | Complete | 2026-02-02 |
-| 3. Layered Display & Projects | 0/2 | Not started | - |
+| 3. Layered Display & Projects | 0/4 | Not started | - |
 | 4. Session Features | 0/2 | Not started | - |
 | 5. Pages & Navigation | 0/2 | Not started | - |
 | 6. Performance & Scale | 0/2 | Not started | - |
