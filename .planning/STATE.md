@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 3 of 6 (Layered Display & Projects)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-03 - Completed 03-01-PLAN.md
+Last activity: 2026-02-03 - Completed 03-02-PLAN.md
 
-Progress: [██████░░░░] 60%
+Progress: [███████░░░] 70%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: 3 min
-- Total execution time: 17 min
+- Total execution time: 20 min
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [██████░░░░] 60%
 |-------|-------|-------|----------|
 | 01-event-capture | 2 | 5 min | 2.5 min |
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
-| 03-layered-display-projects | 1 | 2 min | 2 min |
+| 03-layered-display-projects | 2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (3 min), 02-02 (2 min), 02-03 (5 min), 03-01 (2 min)
+- Last 5 plans: 02-02 (2 min), 02-03 (5 min), 03-01 (2 min), 03-02 (3 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -64,6 +64,10 @@ Recent decisions affecting current work:
 | NuqsAdapter inside ConvexClientProvider | Proper provider nesting order for URL state | 03-01 |
 | parseAsString for project filter | null when no param, string when set | 03-01 |
 | Aggregate pattern for listProjects | Simple approach, can optimize with index later | 03-01 |
+| Shiki highlighter singleton | Cached promise for reuse across components | 03-02 |
+| github-dark theme for Shiki | Matches dark mode design | 03-02 |
+| Controlled expand pattern | EventFeed owns state, EventCard receives props | 03-02 |
+| 200ms cubic-bezier animation | Smooth expand/collapse per react-collapsed | 03-02 |
 
 ### Pending Todos
 
@@ -76,6 +80,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 03-01-PLAN.md
+Stopped at: Completed 03-02-PLAN.md
 Resume file: None
-Next: 03-02-PLAN.md - Project filter UI and event expansion
+Next: 03-03-PLAN.md - Project filter UI and collapsible sidebar
