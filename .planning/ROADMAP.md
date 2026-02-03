@@ -101,11 +101,12 @@ Plans:
   3. Live Feed page contains the full real-time stream with all features
   4. About page shows full bio with GitHub and X/Twitter links
   5. All pages are mobile responsive
-**Plans**: TBD
+**Plans**: 3 plans (Wave 1 -> Wave 2)
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
+- [ ] 05-01-PLAN.md — Navigation and layout (lucide-react, Navigation component, root layout integration)
+- [ ] 05-02-PLAN.md — Home page (Hero, TerminalMockup, LivePreview, FeatureCards)
+- [ ] 05-03-PLAN.md — About page and visual verification (Bio, SocialLinks, human-verify checkpoint)
 
 ### Phase 6: Performance & Scale
 **Goal**: Feed handles rapid events smoothly and shows social proof
@@ -133,7 +134,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 2. Core Feed Display | 3/3 | Complete | 2026-02-02 |
 | 3. Layered Display & Projects | 4/4 | Complete | 2026-02-03 |
 | 4. Session Features | 5/5 | Complete | 2026-02-03 |
-| 5. Pages & Navigation | 0/2 | Not started | - |
+| 5. Pages & Navigation | 0/3 | Not started | - |
 | 6. Performance & Scale | 0/2 | Not started | - |
 
 ---
