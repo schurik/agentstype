@@ -46,7 +46,7 @@ export function LiveFeedContent() {
   const showSessionHint = selectedProject && !selectedSession;
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] bg-background">
       {/* Project sidebar */}
       <ProjectSidebar />
 
