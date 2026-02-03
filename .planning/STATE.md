@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 3 of 6 (Layered Display & Projects)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-03 - Completed 03-02-PLAN.md
+Plan: 3 of 3 in current phase
+Status: Phase complete
+Last activity: 2026-02-03 - Completed 03-03-PLAN.md
 
-Progress: [███████░░░] 70%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: 3 min
-- Total execution time: 20 min
+- Total execution time: 23 min
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [███████░░░] 70%
 |-------|-------|-------|----------|
 | 01-event-capture | 2 | 5 min | 2.5 min |
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
-| 03-layered-display-projects | 2 | 5 min | 2.5 min |
+| 03-layered-display-projects | 3 | 8 min | 2.7 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (2 min), 02-03 (5 min), 03-01 (2 min), 03-02 (3 min)
+- Last 5 plans: 02-03 (5 min), 03-01 (2 min), 03-02 (3 min), 03-03 (3 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -68,6 +68,10 @@ Recent decisions affecting current work:
 | github-dark theme for Shiki | Matches dark mode design | 03-02 |
 | Controlled expand pattern | EventFeed owns state, EventCard receives props | 03-02 |
 | 200ms cubic-bezier animation | Smooth expand/collapse per react-collapsed | 03-02 |
+| Hydration-safe localStorage pattern | hasMounted flag to defer read until after hydration | 03-03 |
+| 5-minute activity threshold | Projects show green pulse if active within 5 min | 03-03 |
+| Auto-select most recent project | If no project selected, auto-select first | 03-03 |
+| Cmd/Ctrl+B keyboard shortcut | Power user shortcut for sidebar toggle | 03-03 |
 
 ### Pending Todos
 
@@ -80,6 +84,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 03-02-PLAN.md
+Stopped at: Completed 03-03-PLAN.md
 Resume file: None
-Next: 03-03-PLAN.md - Project filter UI and collapsible sidebar
+Next: Phase 04 - Polish & UX (phase 03 complete)
