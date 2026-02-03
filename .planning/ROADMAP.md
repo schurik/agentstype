@@ -74,19 +74,21 @@ Plans:
 ### Phase 4: Session Features
 **Goal**: Users can see session boundaries, stats, and agent relationships
 **Depends on**: Phase 3
-**Requirements**: FEED-05, FEED-06, FEED-07, FEED-08, SESS-01, SESS-02, SESS-03, SESS-04
+**Requirements**: FEED-05, FEED-06, FEED-07, FEED-08, SESS-01, SESS-02, ~~SESS-03~~, SESS-04
 **Success Criteria** (what must be TRUE):
   1. Session boundaries clearly show when sessions start/end with duration
-  2. Session goal (initial prompt) is pinned at top of each session
-  3. Session stats show on completion (duration, event count, files, commits)
-  4. Token/cost counter displays tokens consumed and estimated cost
+  2. Session goal (initial prompt) pinned at top of each session
+  3. Session stats shown on completion (duration, event count, files, commits)
+  4. ~~Token/cost counter displays tokens consumed and estimated cost~~ **DEFERRED** - not available via hooks
   5. Agent hierarchy shows orchestrator and spawned subagents as collapsible tree
   6. "Thinking" indicator shows when Claude is processing
-**Plans**: TBD
+**Plans**: 4 plans (Wave 1 -> Wave 2 -> Wave 3)
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md — Backend queries and URL state hooks (date-fns, listSessionsForProject, listAgentsForSession, useSessionFilter, useAgentFilter)
+- [ ] 04-02-PLAN.md — Session header and stats (useSessionStats, useSessionStatus, ThinkingIndicator, SessionHeader, shimmer animation)
+- [ ] 04-03-PLAN.md — Sidebar hierarchy (SessionItem, AgentItem, extend ProjectSidebar with nesting)
+- [ ] 04-04-PLAN.md — Integration and verification (commit markers, EventFeed with session header, visual verification)
 
 ### Phase 5: Pages & Navigation
 **Goal**: Users can navigate between Home, Live Feed, and About pages
@@ -129,7 +131,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 1. Event Capture Infrastructure | 2/2 | Complete | 2026-01-31 |
 | 2. Core Feed Display | 3/3 | Complete | 2026-02-02 |
 | 3. Layered Display & Projects | 4/4 | Complete | 2026-02-03 |
-| 4. Session Features | 0/2 | Not started | - |
+| 4. Session Features | 0/4 | Not started | - |
 | 5. Pages & Navigation | 0/2 | Not started | - |
 | 6. Performance & Scale | 0/2 | Not started | - |
 
