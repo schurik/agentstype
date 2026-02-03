@@ -9,21 +9,21 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Live Feed - Core Display
 
-- [ ] **FEED-01**: Real-time event stream displays events as they happen
-- [ ] **FEED-02**: Each event shows timestamp (relative and absolute)
-- [ ] **FEED-03**: Connection status indicator shows "Live" / "Reconnecting..." / "Offline"
-- [ ] **FEED-04**: Event type styling visually distinguishes reads/writes/bash/errors
-- [ ] **FEED-05**: Session boundaries show when sessions start/end with duration
-- [ ] **FEED-06**: Active agents panel shows orchestrator + spawned subagents
-- [ ] **FEED-07**: Agent hierarchy displays as collapsible tree (orchestrator -> subagents)
-- [ ] **FEED-08**: "Thinking" indicator shows when Claude is processing (no event yet)
+- [x] **FEED-01**: Real-time event stream displays events as they happen
+- [x] **FEED-02**: Each event shows timestamp (relative and absolute)
+- [x] **FEED-03**: Connection status indicator shows "Live" / "Reconnecting..." / "Offline"
+- [x] **FEED-04**: Event type styling visually distinguishes reads/writes/bash/errors
+- [x] **FEED-05**: Session boundaries show when sessions start/end with duration
+- [x] **FEED-06**: Active agents panel shows orchestrator + spawned subagents
+- [x] **FEED-07**: Agent hierarchy displays as collapsible tree (orchestrator -> subagents)
+- [x] **FEED-08**: "Thinking" indicator shows when Claude is processing (no event yet)
 
 ### Live Feed - Layered Display
 
-- [ ] **LAYER-01**: Events show summary by default (rule-based, not AI)
-- [ ] **LAYER-02**: Events expand to show full technical details on click
-- [ ] **LAYER-03**: Technical details include tool name, inputs, outputs
-- [ ] **LAYER-04**: "Currently" one-liner at top summarizes current activity
+- [x] **LAYER-01**: Events show summary by default (rule-based, not AI)
+- [x] **LAYER-02**: Events expand to show full technical details on click
+- [x] **LAYER-03**: Technical details include tool name, inputs, outputs
+- [x] **LAYER-04**: "Currently" one-liner at top summarizes current activity
 
 ### Live Feed - Performance
 
@@ -33,10 +33,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Live Feed - Session Features
 
-- [ ] **SESS-01**: Session goal (initial prompt) pinned at top of session
-- [ ] **SESS-02**: Session stats shown on completion (duration, event count, files, commits)
-- [ ] **SESS-03**: Token/cost counter displays tokens consumed and estimated cost
-- [ ] **SESS-04**: Commit markers highlight git commits as milestones
+- [x] **SESS-01**: Session goal (initial prompt) pinned at top of session
+- [x] **SESS-02**: Session stats shown on completion (duration, event count, files, commits)
+- [ ] **SESS-03**: Token/cost counter displays tokens consumed and estimated cost *(Deferred - not available via hooks)*
+- [x] **SESS-04**: Commit markers highlight git commits as milestones
 
 ### Live Feed - Social
 
@@ -44,10 +44,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Live Feed - Project Filtering
 
-- [ ] **PROJ-01**: Projects auto-discovered from Claude Code session cwd
-- [ ] **PROJ-02**: Project name derived from folder name
-- [ ] **PROJ-03**: Filter dropdown allows filtering feed by project
-- [ ] **PROJ-04**: URL reflects project filter (/live?project=meetrecap)
+- [x] **PROJ-01**: Projects auto-discovered from Claude Code session cwd
+- [x] **PROJ-02**: Project name derived from folder name
+- [x] **PROJ-03**: Filter dropdown allows filtering feed by project
+- [x] **PROJ-04**: URL reflects project filter (/live?project=meetrecap)
 
 ### Event Capture System
 
@@ -77,11 +77,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Design
 
-- [ ] **DESGN-01**: Dark mode as default/only mode
-- [ ] **DESGN-02**: Monospace or code-inspired typography
-- [ ] **DESGN-03**: Generous whitespace
-- [ ] **DESGN-04**: Sharp clean lines, no gradients
-- [ ] **DESGN-05**: No generic AI illustrations or stock imagery
+- [x] **DESGN-01**: Dark mode as default/only mode
+- [x] **DESGN-02**: Monospace or code-inspired typography
+- [x] **DESGN-03**: Generous whitespace
+- [x] **DESGN-04**: Sharp clean lines, no gradients
+- [x] **DESGN-05**: No generic AI illustrations or stock imagery
 - [ ] **DESGN-06**: Mobile responsive
 
 ## v2 Requirements
@@ -132,31 +132,31 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CAPT-03 | Phase 1 | Complete |
 | CAPT-04 | Phase 1 | Complete |
 | CAPT-05 | Phase 1 | Complete |
-| FEED-01 | Phase 2 | Pending |
-| FEED-02 | Phase 2 | Pending |
-| FEED-03 | Phase 2 | Pending |
-| FEED-04 | Phase 2 | Pending |
-| DESGN-01 | Phase 2 | Pending |
-| DESGN-02 | Phase 2 | Pending |
-| DESGN-03 | Phase 2 | Pending |
-| DESGN-04 | Phase 2 | Pending |
-| DESGN-05 | Phase 2 | Pending |
-| LAYER-01 | Phase 3 | Pending |
-| LAYER-02 | Phase 3 | Pending |
-| LAYER-03 | Phase 3 | Pending |
-| LAYER-04 | Phase 3 | Pending |
-| PROJ-01 | Phase 3 | Pending |
-| PROJ-02 | Phase 3 | Pending |
-| PROJ-03 | Phase 3 | Pending |
-| PROJ-04 | Phase 3 | Pending |
-| FEED-05 | Phase 4 | Pending |
-| FEED-06 | Phase 4 | Pending |
-| FEED-07 | Phase 4 | Pending |
-| FEED-08 | Phase 4 | Pending |
-| SESS-01 | Phase 4 | Pending |
-| SESS-02 | Phase 4 | Pending |
-| SESS-03 | Phase 4 | Pending |
-| SESS-04 | Phase 4 | Pending |
+| FEED-01 | Phase 2 | Complete |
+| FEED-02 | Phase 2 | Complete |
+| FEED-03 | Phase 2 | Complete |
+| FEED-04 | Phase 2 | Complete |
+| DESGN-01 | Phase 2 | Complete |
+| DESGN-02 | Phase 2 | Complete |
+| DESGN-03 | Phase 2 | Complete |
+| DESGN-04 | Phase 2 | Complete |
+| DESGN-05 | Phase 2 | Complete |
+| LAYER-01 | Phase 3 | Complete |
+| LAYER-02 | Phase 3 | Complete |
+| LAYER-03 | Phase 3 | Complete |
+| LAYER-04 | Phase 3 | Complete |
+| PROJ-01 | Phase 3 | Complete |
+| PROJ-02 | Phase 3 | Complete |
+| PROJ-03 | Phase 3 | Complete |
+| PROJ-04 | Phase 3 | Complete |
+| FEED-05 | Phase 4 | Complete |
+| FEED-06 | Phase 4 | Complete |
+| FEED-07 | Phase 4 | Complete |
+| FEED-08 | Phase 4 | Complete |
+| SESS-01 | Phase 4 | Complete |
+| SESS-02 | Phase 4 | Complete |
+| SESS-03 | Phase 4 | Deferred |
+| SESS-04 | Phase 4 | Complete |
 | HOME-01 | Phase 5 | Pending |
 | HOME-02 | Phase 5 | Pending |
 | HOME-03 | Phase 5 | Pending |

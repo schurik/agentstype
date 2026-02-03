@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2025-01-31)
 
 **Core value:** The live feed - real-time Claude Code sessions with layered display (summary + technical depth)
-**Current focus:** Phase 4 - Session Features
+**Current focus:** Phase 4 complete - Ready for Phase 5
 
 ## Current Position
 
-Phase: 4 of 6 (Session Features)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-02-03 - Completed 04-03-PLAN.md
+Phase: 4 of 6 (Session Features) - COMPLETE
+Plan: 4 of 4 in current phase
+Status: Phase complete, verified
+Last activity: 2026-02-03 - Completed 04-04-PLAN.md (verified)
 
 Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
-- Average duration: 2.8 min
-- Total execution time: 34 min
+- Total plans completed: 13
+- Average duration: 2.9 min
+- Total execution time: 38 min
 
 **By Phase:**
 
@@ -30,10 +30,10 @@ Progress: [██████████] 100%
 | 01-event-capture | 2 | 5 min | 2.5 min |
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
-| 04-session-features | 3 | 7 min | 2.3 min |
+| 04-session-features | 4 | 11 min | 2.8 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-04 (4 min), 04-01 (2 min), 04-02 (2 min), 04-03 (3 min)
+- Last 5 plans: 04-01 (2 min), 04-02 (2 min), 04-03 (3 min), 04-04 (5 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -84,6 +84,10 @@ Recent decisions affecting current work:
 | Widen sidebar from w-48 to w-56 | Accommodate nested hierarchy display | 04-03 |
 | Conditional query with 'skip' | Avoid fetching sessions/agents for unselected items | 04-03 |
 | Track expanded projects separately | Allows collapsing selected project | 04-03 |
+| Prioritize sessionId over projectName in listEvents | More specific filter takes precedence | 04-04 |
+| Session click always clears agent | Better UX for returning to full session view | 04-04 |
+| Text shimmer via background-position animation | Gradient text animation instead of separate bar | 04-04 |
+| Commit detection via 'git commit' in command | Simple string matching for milestone markers | 04-04 |
 
 ### Pending Todos
 
@@ -96,6 +100,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 04-03-PLAN.md
+Stopped at: Phase 4 complete and verified
 Resume file: None
-Next: Phase 05 (if defined) or project complete
+Next: Phase 05 - Pages & Navigation

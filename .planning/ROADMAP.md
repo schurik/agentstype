@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Event Capture Infrastructure** - Hook captures events securely and pushes to Convex
 - [x] **Phase 2: Core Feed Display** - Real-time event stream with basic styling and connection status
 - [x] **Phase 3: Layered Display & Projects** - Progressive disclosure and project filtering
-- [ ] **Phase 4: Session Features** - Session boundaries, stats, and agent hierarchy
+- [x] **Phase 4: Session Features** - Session boundaries, stats, and agent hierarchy
 - [ ] **Phase 5: Pages & Navigation** - Home, Live Feed, and About pages with full design system
 - [ ] **Phase 6: Performance & Scale** - Event batching, virtualization, and viewer count
 
@@ -85,10 +85,10 @@ Plans:
 **Plans**: 4 plans (Wave 1 -> Wave 2 -> Wave 3)
 
 Plans:
-- [ ] 04-01-PLAN.md — Backend queries and URL state hooks (date-fns, listSessionsForProject, listAgentsForSession, useSessionFilter, useAgentFilter)
-- [ ] 04-02-PLAN.md — Session header and stats (useSessionStats, useSessionStatus, ThinkingIndicator, SessionHeader, shimmer animation)
-- [ ] 04-03-PLAN.md — Sidebar hierarchy (SessionItem, AgentItem, extend ProjectSidebar with nesting)
-- [ ] 04-04-PLAN.md — Integration and verification (commit markers, EventFeed with session header, visual verification)
+- [x] 04-01-PLAN.md — Backend queries and URL state hooks (date-fns, listSessionsForProject, listAgentsForSession, useSessionFilter, useAgentFilter)
+- [x] 04-02-PLAN.md — Session header and stats (useSessionStats, useSessionStatus, ThinkingIndicator, SessionHeader, shimmer animation)
+- [x] 04-03-PLAN.md — Sidebar hierarchy (SessionItem, AgentItem, extend ProjectSidebar with nesting)
+- [x] 04-04-PLAN.md — Integration and verification (commit markers, EventFeed with session header, visual verification)
 
 ### Phase 5: Pages & Navigation
 **Goal**: Users can navigate between Home, Live Feed, and About pages
@@ -131,7 +131,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 1. Event Capture Infrastructure | 2/2 | Complete | 2026-01-31 |
 | 2. Core Feed Display | 3/3 | Complete | 2026-02-02 |
 | 3. Layered Display & Projects | 4/4 | Complete | 2026-02-03 |
-| 4. Session Features | 0/4 | Not started | - |
+| 4. Session Features | 4/4 | Complete | 2026-02-03 |
 | 5. Pages & Navigation | 0/2 | Not started | - |
 | 6. Performance & Scale | 0/2 | Not started | - |
 
