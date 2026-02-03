@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { EventCard } from "./EventCard";
 import { NewEventsIndicator } from "./NewEventsIndicator";
 import { useNewEventsIndicator } from "./hooks/useNewEventsIndicator";
+import { useExpandedEvents } from "@/app/hooks/useExpandedEvents";
 
 /**
  * Loading skeleton for event cards during initial data fetch.
@@ -30,6 +31,7 @@ function EventSkeleton() {
  * - "X new events" badge when scrolled down and new events arrive
  * - Loading and empty states
  * - Animation for new events (after initial load)
+ * - Expand/collapse to show event details
  */
 export function EventFeed() {
   // Track which events were present on initial load
@@ -50,8 +52,12 @@ export function EventFeed() {
   }, [events, hasInitialLoad]);
 
   // Track new events when user has scrolled down
-  const eventIds = events?.map(e => e._id) ?? [];
-  const { containerRef, newEventCount, scrollToTop } = useNewEventsIndicator(eventIds);
+  const eventIds = events?.map((e) => e._id) ?? [];
+  const { containerRef, newEventCount, scrollToTop } =
+    useNewEventsIndicator(eventIds);
+
+  // Track expanded/collapsed state for each event
+  const { isExpanded, toggle } = useExpandedEvents();
 
   // Loading state
   if (events === undefined) {
@@ -97,6 +103,8 @@ export function EventFeed() {
             key={event._id}
             event={event}
             isNew={hasInitialLoad && !initialEventIds.has(event._id)}
+            isExpanded={isExpanded(event._id)}
+            onToggle={() => toggle(event._id)}
           />
         ))}
       </div>
