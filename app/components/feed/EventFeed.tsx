@@ -70,8 +70,21 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
     limit: 100,
   });
 
+  // Fetch session data to get accurate eventCount (not limited by listEvents pagination)
+  const sessionData = useQuery(
+    api.events.listSessionsForProject,
+    selectedProject ? { projectName: selectedProject } : "skip"
+  );
+
+  // Find the selected session to get its accurate eventCount
+  const currentSession = useMemo(() => {
+    if (!sessionData || !selectedSession) return null;
+    return sessionData.find((s) => s.sessionId === selectedSession) ?? null;
+  }, [sessionData, selectedSession]);
+
   // Compute session stats and status for header
-  const stats = useSessionStats(events, selectedSession);
+  // Pass accurate eventCount from session data (not limited by 100-event query)
+  const stats = useSessionStats(events, selectedSession, currentSession?.eventCount);
   const status = useSessionStatus(events, selectedSession);
 
   // Extract goal from first user_prompt_submit event
