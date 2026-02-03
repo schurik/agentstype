@@ -117,11 +117,13 @@ Plans:
   2. Filter dropdown allows filtering by event type
   3. Feed with 100+ events scrolls smoothly (virtualized list)
   4. Viewer count shows how many people are watching
-**Plans**: TBD
+**Plans**: 4 plans (Wave 1 -> Wave 2 -> Wave 3)
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md — Dependencies and Convex presence setup (@tanstack/react-virtual, @convex-dev/presence, convex.config.ts, presence.ts)
+- [ ] 06-02-PLAN.md — Event batching and filtering hooks (useBatchedEvents, useEventFilter, FilterBar component)
+- [ ] 06-03-PLAN.md — Viewer count and batch display (useViewerCount, usePageVisibility, BatchedEventGroup component)
+- [ ] 06-04-PLAN.md — Virtualized feed integration and verification (EventFeed virtualization, Header viewer count, visual verification)
 
 ## Progress
 
@@ -135,7 +137,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Layered Display & Projects | 4/4 | Complete | 2026-02-03 |
 | 4. Session Features | 5/5 | Complete | 2026-02-03 |
 | 5. Pages & Navigation | 3/3 | Complete | 2026-02-03 |
-| 6. Performance & Scale | 0/2 | Not started | - |
+| 6. Performance & Scale | 0/4 | Not started | - |
 
 ---
 *Roadmap created: 2025-01-31*
