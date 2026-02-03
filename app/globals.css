@@ -19,16 +19,16 @@ body {
   font-family: var(--font-mono);
 }
 
-/* Shimmer animation for thinking indicator */
+/* Shimmer animation for thinking indicator - animates background position for text gradient */
 @keyframes shimmer {
   0% {
-    transform: translateX(-100%);
+    background-position: 100% 50%;
   }
   100% {
-    transform: translateX(100%);
+    background-position: -100% 50%;
   }
 }
 
 .animate-shimmer {
-  animation: shimmer 2s linear infinite;
+  animation: shimmer 2s ease-in-out infinite;
 }

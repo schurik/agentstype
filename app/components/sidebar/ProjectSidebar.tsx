@@ -71,13 +71,12 @@ export function ProjectSidebar() {
     setSelectedProject(projectName)
   }, [selectedProject, setSelectedProject, setSelectedSession, setSelectedAgent])
 
-  // Clear agent when session changes
+  // Clear agent when session is selected (always clear to show all session events)
   const handleSelectSession = useCallback((sessionId: string) => {
-    if (sessionId !== selectedSession) {
-      setSelectedAgent(null)
-    }
+    // Always clear agent when clicking a session to show all session events
+    setSelectedAgent(null)
     setSelectedSession(sessionId)
-  }, [selectedSession, setSelectedSession, setSelectedAgent])
+  }, [setSelectedSession, setSelectedAgent])
 
   // Toggle agent selection
   const handleSelectAgent = useCallback((agentId: string | null) => {

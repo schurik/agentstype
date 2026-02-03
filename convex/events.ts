@@ -111,18 +111,19 @@ export const listEvents = query({
 
     let events;
 
-    if (args.projectName) {
-      // Use by_project index for project-filtered queries
-      events = await ctx.db
-        .query("events")
-        .withIndex("by_project", (q) => q.eq("projectName", args.projectName!))
-        .order("desc")
-        .take(limit);
-    } else if (args.sessionId) {
+    // Prioritize sessionId over projectName for more specific filtering
+    if (args.sessionId) {
       // Use by_session index for session-filtered queries
       events = await ctx.db
         .query("events")
         .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId!))
+        .order("desc")
+        .take(limit);
+    } else if (args.projectName) {
+      // Use by_project index for project-filtered queries
+      events = await ctx.db
+        .query("events")
+        .withIndex("by_project", (q) => q.eq("projectName", args.projectName!))
         .order("desc")
         .take(limit);
     } else {
@@ -252,7 +253,7 @@ export const listAgentsForSession = query({
       .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
       .collect();
 
-    // Find subagent_start events to get agents
+    // Find agents and count their events
     const agentMap = new Map<
       string,
       {
@@ -262,22 +263,22 @@ export const listAgentsForSession = query({
       }
     >();
 
+    // First pass: register all agents and count events with agentId
     for (const event of events) {
-      // Register agent from subagent_start event
-      if (event.type === "subagent_start" && event.agentId) {
-        if (!agentMap.has(event.agentId)) {
+      if (event.agentId) {
+        const existing = agentMap.get(event.agentId);
+        if (existing) {
+          existing.eventCount++;
+          // Update agentType if this is a subagent_start event and we don't have it yet
+          if (event.type === "subagent_start" && event.agentType && !existing.agentType) {
+            existing.agentType = event.agentType;
+          }
+        } else {
           agentMap.set(event.agentId, {
             agentId: event.agentId,
-            agentType: event.agentType ?? null,
-            eventCount: 0,
+            agentType: event.type === "subagent_start" ? (event.agentType ?? null) : null,
+            eventCount: 1,
           });
-        }
-      }
-      // Count events per agent
-      if (event.agentId) {
-        const agent = agentMap.get(event.agentId);
-        if (agent) {
-          agent.eventCount++;
         }
       }
     }
