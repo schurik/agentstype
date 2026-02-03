@@ -4,8 +4,41 @@ import { useRelativeTime } from "./hooks/useRelativeTime";
 import { useCollapse } from "react-collapsed";
 import { ExpandedContent } from "./ExpandedContent";
 import type { Doc } from "@/convex/_generated/dataModel";
+import { useMemo } from "react";
 
 type Event = Doc<"events">;
+
+/**
+ * Detect if an event is a git commit.
+ * Checks Bash tool commands for 'git commit'.
+ */
+function isCommitEvent(event: Event): boolean {
+  if (event.tool !== "Bash") return false;
+  const command =
+    event.toolInput && typeof event.toolInput === "object"
+      ? (event.toolInput as { command?: string }).command
+      : undefined;
+  return typeof command === "string" && command.includes("git commit");
+}
+
+/**
+ * Extract commit message from a git commit command.
+ * Parses -m "message" or -m 'message' from the command string.
+ * Returns abbreviated message (first 50 chars) or null if not found.
+ */
+function extractCommitMessage(event: Event): string | null {
+  if (!isCommitEvent(event)) return null;
+  const command = (event.toolInput as { command?: string }).command;
+  if (!command) return null;
+
+  // Match -m "message" or -m 'message' patterns
+  const match = command.match(/-m\s+["']([^"']+)["']/);
+  if (match && match[1]) {
+    const message = match[1];
+    return message.length > 50 ? message.slice(0, 50) + "..." : message;
+  }
+  return null;
+}
 
 /**
  * Border colors by event type for visual distinction.
@@ -84,9 +117,17 @@ export function EventCard({
     easing: "cubic-bezier(0.4, 0, 0.2, 1)",
   });
 
-  // Determine border color from tool name or event type
-  const borderClass =
-    borderColors[event.tool ?? event.type] ?? "border-l-zinc-600";
+  // Check if this is a git commit event for milestone styling
+  const isCommit = useMemo(() => isCommitEvent(event), [event]);
+  const commitMessage = useMemo(
+    () => (isCommit ? extractCommitMessage(event) : null),
+    [event, isCommit]
+  );
+
+  // Determine border color - commits get special green accent
+  const borderClass = isCommit
+    ? "border-l-green-600"
+    : borderColors[event.tool ?? event.type] ?? "border-l-zinc-600";
 
   // Extract file path from toolInput if available (for Read/Write/Edit operations)
   const filePath =
@@ -132,13 +173,38 @@ export function EventCard({
               d="M9 5l7 7-7 7"
             />
           </svg>
+          {/* Git commit icon for milestone events */}
+          {isCommit && (
+            <svg
+              className="w-4 h-4 text-green-500 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <circle cx="12" cy="12" r="4" strokeWidth={2} />
+              <path strokeLinecap="round" strokeWidth={2} d="M12 2v6M12 16v6" />
+            </svg>
+          )}
           <span className="font-mono text-sm text-zinc-300 shrink-0">
             {label}
           </span>
-          {filePath && (
-            <span className="font-mono text-xs text-zinc-500 truncate">
-              {truncatePath(filePath)}
+          {/* Commit badge */}
+          {isCommit && (
+            <span className="text-xs bg-green-900/50 text-green-400 px-1.5 py-0.5 rounded shrink-0">
+              Commit
             </span>
+          )}
+          {/* Show commit message or file path */}
+          {commitMessage ? (
+            <span className="font-mono text-xs text-green-400/70 truncate">
+              {commitMessage}
+            </span>
+          ) : (
+            filePath && (
+              <span className="font-mono text-xs text-zinc-500 truncate">
+                {truncatePath(filePath)}
+              </span>
+            )
           )}
         </div>
         <Timestamp value={event.timestamp} />
