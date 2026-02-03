@@ -2,13 +2,18 @@
 
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { EventCard } from "./EventCard";
 import { NewEventsIndicator } from "./NewEventsIndicator";
 import { CurrentlyIndicator } from "./CurrentlyIndicator";
+import { SessionHeader } from "./SessionHeader";
 import { useNewEventsIndicator } from "./hooks/useNewEventsIndicator";
 import { useExpandedEvents } from "@/app/hooks/useExpandedEvents";
 import { useProjectFilter } from "@/app/hooks/useProjectFilter";
+import { useSessionFilter } from "@/app/hooks/useSessionFilter";
+import { useAgentFilter } from "@/app/hooks/useAgentFilter";
+import { useSessionStats } from "@/app/hooks/useSessionStats";
+import { useSessionStatus } from "@/app/hooks/useSessionStatus";
 
 /**
  * Loading skeleton for event cards during initial data fetch.
@@ -46,8 +51,10 @@ interface EventFeedProps {
  * - CurrentlyIndicator showing latest activity
  */
 export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
-  // Get selected project from URL
+  // Get selected project, session, and agent from URL
   const [selectedProject] = useProjectFilter();
+  const [selectedSession] = useSessionFilter();
+  const [selectedAgent] = useAgentFilter();
 
   // Track which events were present on initial load
   const [initialEventIds, setInitialEventIds] = useState<Set<string>>(
@@ -55,11 +62,46 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
   );
   const [hasInitialLoad, setHasInitialLoad] = useState(false);
 
-  // Subscribe to real-time events (newest first / DESC order), filtered by project
+  // Subscribe to real-time events (newest first / DESC order), filtered by project/session/agent
   const events = useQuery(api.events.listEvents, {
     projectName: selectedProject ?? undefined,
+    sessionId: selectedSession ?? undefined,
+    agentId: selectedAgent ?? undefined,
     limit: 100,
   });
+
+  // Compute session stats and status for header
+  const stats = useSessionStats(events, selectedSession);
+  const status = useSessionStatus(events, selectedSession);
+
+  // Extract goal from first user_prompt_submit event
+  const goal = useMemo(() => {
+    if (!events || !selectedSession) return null;
+    const promptEvent = events.find(
+      (e) => e.sessionId === selectedSession && e.type === "user_prompt_submit"
+    );
+    // Look from oldest to newest (reverse since events are DESC)
+    const sessionEvents = events
+      .filter((e) => e.sessionId === selectedSession)
+      .reverse();
+    const firstPrompt = sessionEvents.find(
+      (e) => e.type === "user_prompt_submit"
+    );
+    if (firstPrompt && firstPrompt.prompt && typeof firstPrompt.prompt === "string") {
+      return firstPrompt.prompt;
+    }
+    return null;
+  }, [events, selectedSession]);
+
+  // Extract latest event tool for thinking context
+  const latestEventTool = useMemo(() => {
+    if (!events || events.length === 0) return undefined;
+    // Find most recent event with a tool (skip session_start/session_end)
+    const toolEvent = events.find(
+      (e) => e.tool && !["session_start", "session_end"].includes(e.type)
+    );
+    return toolEvent?.tool ?? undefined;
+  }, [events]);
 
   // Track expanded/collapsed state for each event
   const { isExpanded, toggle, expandAll, collapseAll } = useExpandedEvents();
@@ -117,17 +159,25 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
     );
   }
 
-  // Empty state
+  // Empty state - different messages based on selection context
   if (events.length === 0) {
+    let emptyMessage = "No events yet.";
+    let emptyHint = "Events will appear here when Claude Code is active.";
+
+    if (selectedSession) {
+      emptyMessage = "No events in this session.";
+      emptyHint = "This session may have just started.";
+    } else if (selectedProject) {
+      emptyMessage = `No events yet for ${selectedProject}.`;
+    }
+
     return (
       <div className="flex flex-col h-full overflow-hidden">
         <div className="flex-1 flex items-center justify-center">
           <p className="text-zinc-500 text-center py-8">
-            No events yet{selectedProject ? ` for ${selectedProject}` : ""}.
+            {emptyMessage}
             <br />
-            <span className="text-sm">
-              Events will appear here when Claude Code is active.
-            </span>
+            <span className="text-sm">{emptyHint}</span>
           </p>
         </div>
       </div>
@@ -140,11 +190,23 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
   // Events are already in DESC order (newest first) from Convex
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      {/* Currently indicator */}
-      <CurrentlyIndicator
-        event={latestEvent}
-        isReceivingEvents={isReceivingEvents}
-      />
+      {/* Session header when session is selected */}
+      {selectedSession && (
+        <SessionHeader
+          goal={goal}
+          stats={stats}
+          status={status}
+          latestEventTool={latestEventTool}
+        />
+      )}
+
+      {/* Currently indicator (show when no session selected, or as secondary info) */}
+      {!selectedSession && (
+        <CurrentlyIndicator
+          event={latestEvent}
+          isReceivingEvents={isReceivingEvents}
+        />
+      )}
 
       {/* New events banner - above scroll container for visibility */}
       <NewEventsIndicator count={newEventCount} onClick={scrollToTop} />
