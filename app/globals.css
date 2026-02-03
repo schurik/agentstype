@@ -18,3 +18,17 @@ body {
   color: var(--foreground);
   font-family: var(--font-mono);
 }
+
+/* Shimmer animation for thinking indicator */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
