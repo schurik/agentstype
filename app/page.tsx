@@ -1,19 +1,8 @@
-"use client";
-
-import { Header } from "@/app/components/ui/Header";
-import { EventFeed } from "@/app/components/feed/EventFeed";
+import { redirect } from "next/navigation";
 
 /**
- * Main page composing Header and EventFeed.
- * Full-height layout with sticky header and scrollable feed.
+ * Home page redirects to /live where the main feed lives.
  */
 export default function Home() {
-  return (
-    <div className="flex flex-col h-screen bg-background">
-      <Header />
-      <main className="flex-1 overflow-hidden">
-        <EventFeed />
-      </main>
-    </div>
-  );
+  redirect("/live");
 }
