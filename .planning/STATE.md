@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2025-01-31)
 
 **Core value:** The live feed - real-time Claude Code sessions with layered display (summary + technical depth)
-**Current focus:** Phase 3 - Layered Display & Projects
+**Current focus:** Phase 4 - Session Features
 
 ## Current Position
 
-Phase: 3 of 6 (Layered Display & Projects)
-Plan: 4 of 4 in current phase
-Status: Phase complete
-Last activity: 2026-02-03 - Completed 03-04-PLAN.md
+Phase: 4 of 6 (Session Features)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-03 - Completed 04-01-PLAN.md
 
-Progress: [████████░░] 80%
+Progress: [████████░░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: 3 min
-- Total execution time: 27 min
+- Total plans completed: 10
+- Average duration: 2.9 min
+- Total execution time: 29 min
 
 **By Phase:**
 
@@ -30,9 +30,10 @@ Progress: [████████░░] 80%
 | 01-event-capture | 2 | 5 min | 2.5 min |
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
+| 04-session-features | 1 | 2 min | 2.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (2 min), 03-02 (3 min), 03-03 (3 min), 03-04 (4 min)
+- Last 5 plans: 03-02 (3 min), 03-03 (3 min), 03-04 (4 min), 04-01 (2 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 | Cmd/Ctrl+B keyboard shortcut | Power user shortcut for sidebar toggle | 03-03 |
 | Callback pattern for expand/collapse | EventFeed exposes handlers via callback, Header wires to buttons | 03-04 |
 | Suspense boundary for URL state | useSearchParams/nuqs needs Suspense for SSR hydration | 03-04 |
+| Post-filter agentId (no index) | Small datasets make post-filter acceptable | 04-01 |
+| Session goal from first user_prompt_submit | Captures initial intent for session display | 04-01 |
+| hasEnded from session_end event presence | Determines session completion status | 04-01 |
 
 ### Pending Todos
 
@@ -86,6 +90,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 03-04-PLAN.md (Phase 3 complete)
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
-Next: Phase 04 - Session Features
+Next: 04-02-PLAN.md (Sidebar hierarchy)
