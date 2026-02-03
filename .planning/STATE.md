@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 5 of 6 (Pages & Navigation)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-03 - Completed 05-01-PLAN.md (Navigation)
+Last activity: 2026-02-03 - Completed 05-02-PLAN.md (Home Page)
 
-Progress: [███████████░░░░] 75%
+Progress: [████████████░░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
+- Total plans completed: 16
 - Average duration: 2.9 min
-- Total execution time: 44 min
+- Total execution time: 46 min
 
 **By Phase:**
 
@@ -31,10 +31,10 @@ Progress: [███████████░░░░] 75%
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
 | 04-session-features | 5 | 14 min | 2.8 min |
-| 05-pages-navigation | 1 | 3 min | 3.0 min |
+| 05-pages-navigation | 2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-03 (3 min), 04-04 (5 min), 04-05 (3 min), 05-01 (3 min)
+- Last 5 plans: 04-04 (5 min), 04-05 (3 min), 05-01 (3 min), 05-02 (2 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -94,6 +94,9 @@ Recent decisions affecting current work:
 | Bottom nav for mobile (not hamburger menu) | Modern app-like UX per CONTEXT.md | 05-01 |
 | Exact pathname match for home, prefix for others | Accurate active state indication | 05-01 |
 | Navigation in root layout | All-page consistency | 05-01 |
+| 5-minute LIVE badge threshold | Matches existing activity detection threshold | 05-02 |
+| Terminal mockup with traffic lights | macOS-style authenticity per CONTEXT.md | 05-02 |
+| Mobile-first terminal positioning | Terminal above text on small screens | 05-02 |
 
 ### Pending Todos
 
@@ -106,6 +109,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 05-01-PLAN.md (Navigation)
+Stopped at: Completed 05-02-PLAN.md (Home Page)
 Resume file: None
-Next: Plan 05-02 (Home page with hero and terminal preview)
+Next: Plan 05-03 (About page with bio and social links)
