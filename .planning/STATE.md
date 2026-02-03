@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2025-01-31)
 
 **Core value:** The live feed - real-time Claude Code sessions with layered display (summary + technical depth)
-**Current focus:** Phase 4 complete - Ready for Phase 5
+**Current focus:** Phase 5 in progress - Pages & Navigation
 
 ## Current Position
 
-Phase: 4 of 6 (Session Features) - COMPLETE
-Plan: 5 of 5 in current phase (gap closure)
-Status: Phase complete, verified with gap closure
-Last activity: 2026-02-03 - Completed 04-05-PLAN.md (gap closure for UAT Test 7)
+Phase: 5 of 6 (Pages & Navigation)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-03 - Completed 05-01-PLAN.md (Navigation)
 
-Progress: [██████████] 100%
+Progress: [███████████░░░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: 2.9 min
-- Total execution time: 41 min
+- Total execution time: 44 min
 
 **By Phase:**
 
@@ -31,9 +31,10 @@ Progress: [██████████] 100%
 | 02-core-feed-display | 3 | 10 min | 3.3 min |
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
 | 04-session-features | 5 | 14 min | 2.8 min |
+| 05-pages-navigation | 1 | 3 min | 3.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-02 (2 min), 04-03 (3 min), 04-04 (5 min), 04-05 (3 min)
+- Last 5 plans: 04-03 (3 min), 04-04 (5 min), 04-05 (3 min), 05-01 (3 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -90,6 +91,9 @@ Recent decisions affecting current work:
 | Commit detection via 'git commit' in command | Simple string matching for milestone markers | 04-04 |
 | Optional totalEventCount param with fallback | Backward compatible way to provide accurate counts | 04-05 |
 | Query sessions in EventFeed for accurate count | Convex deduplicates with existing sidebar query | 04-05 |
+| Bottom nav for mobile (not hamburger menu) | Modern app-like UX per CONTEXT.md | 05-01 |
+| Exact pathname match for home, prefix for others | Accurate active state indication | 05-01 |
+| Navigation in root layout | All-page consistency | 05-01 |
 
 ### Pending Todos
 
@@ -102,6 +106,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-03
-Stopped at: Completed 04-05-PLAN.md (gap closure)
+Stopped at: Completed 05-01-PLAN.md (Navigation)
 Resume file: None
-Next: Phase 05 - Pages & Navigation
+Next: Plan 05-02 (Home page with hero and terminal preview)
