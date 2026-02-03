@@ -132,3 +132,31 @@ export const listEvents = query({
     return events;
   },
 });
+
+/**
+ * Query for listing unique projects with their most recent activity.
+ * Enables project filter dropdown population.
+ *
+ * @returns Array of { name: string, lastActivity: number } sorted by lastActivity DESC
+ */
+export const listProjects = query({
+  args: {},
+  handler: async (ctx) => {
+    // Get all events to extract unique projects
+    const events = await ctx.db.query("events").collect();
+
+    // Reduce to unique projects with most recent timestamp
+    const projectMap = new Map<string, number>();
+    for (const event of events) {
+      const existing = projectMap.get(event.projectName) ?? 0;
+      if (event.timestamp > existing) {
+        projectMap.set(event.projectName, event.timestamp);
+      }
+    }
+
+    // Convert to array and sort by lastActivity DESC
+    return Array.from(projectMap.entries())
+      .map(([name, lastActivity]) => ({ name, lastActivity }))
+      .sort((a, b) => b.lastActivity - a.lastActivity);
+  },
+});
