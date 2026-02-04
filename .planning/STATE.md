@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 6 of 6 (Performance & Scale) - IN PROGRESS
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-04 - Completed 06-01-PLAN.md
+Last activity: 2026-02-04 - Completed 06-02-PLAN.md
 
-Progress: [██████████████░░] 86%
+Progress: [███████████████░░] 90%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
+- Total plans completed: 19
 - Average duration: 2.9 min
-- Total execution time: 52 min
+- Total execution time: 55 min
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [██████████████░░] 86%
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
 | 04-session-features | 5 | 14 min | 2.8 min |
 | 05-pages-navigation | 3 | 8 min | 2.7 min |
-| 06-performance-scale | 1 | 3 min | 3.0 min |
+| 06-performance-scale | 2 | 6 min | 3.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 05-01 (3 min), 05-02 (2 min), 05-03 (3 min), 06-01 (3 min)
+- Last 5 plans: 05-02 (2 min), 05-03 (3 min), 06-01 (3 min), 06-02 (3 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -104,6 +104,10 @@ Recent decisions affecting current work:
 | heartbeat requires sessionId parameter | Per @convex-dev/presence API, sessionId is required | 06-01 |
 | listViewers uses listRoom with onlineOnly | listRoom takes roomId directly, list() requires token | 06-01 |
 | 10 second heartbeat interval | Presence auto-removes at 2.5x interval (25s stale) | 06-01 |
+| parseAsArrayOf for multi-select filter URL state | Enables comma-separated filter values (filter=Read,Write) | 06-02 |
+| Two-pass batching algorithm | toolUseId grouping before consecutive batching | 06-02 |
+| BATCHABLE_TOOLS limited to read-heavy ops | Read, Glob, Grep, WebSearch, WebFetch only | 06-02 |
+| MIN_BATCH_SIZE = 2 | Per CONTEXT.md batching threshold | 06-02 |
 
 ### Pending Todos
 
@@ -116,6 +120,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-04
-Stopped at: Completed 06-01-PLAN.md
+Stopped at: Completed 06-02-PLAN.md
 Resume file: None
-Next: 06-02-PLAN.md (Virtualized Event Feed)
+Next: 06-03-PLAN.md (Integration & Wiring)
