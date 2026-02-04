@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@convex-dev/presence": "^0.3.0",
+    "@tanstack/react-virtual": "^3.13.18",
     "convex": "^1.31.6",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.563.0",
