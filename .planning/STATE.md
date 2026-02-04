@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 ## Current Position
 
 Phase: 6 of 6 (Performance & Scale) - IN PROGRESS
-Plan: 2 of 3 in current phase
+Plan: 3 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-04 - Completed 06-02-PLAN.md
+Last activity: 2026-02-04 - Completed 06-03-PLAN.md
 
-Progress: [███████████████░░] 90%
+Progress: [██████████████████] 95%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 19
+- Total plans completed: 20
 - Average duration: 2.9 min
-- Total execution time: 55 min
+- Total execution time: 58 min
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [███████████████░░] 90%
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
 | 04-session-features | 5 | 14 min | 2.8 min |
 | 05-pages-navigation | 3 | 8 min | 2.7 min |
-| 06-performance-scale | 2 | 6 min | 3.0 min |
+| 06-performance-scale | 3 | 9 min | 3.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 05-02 (2 min), 05-03 (3 min), 06-01 (3 min), 06-02 (3 min)
+- Last 5 plans: 05-03 (3 min), 06-01 (3 min), 06-02 (3 min), 06-03 (3 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -108,6 +108,8 @@ Recent decisions affecting current work:
 | Two-pass batching algorithm | toolUseId grouping before consecutive batching | 06-02 |
 | BATCHABLE_TOOLS limited to read-heavy ops | Read, Glob, Grep, WebSearch, WebFetch only | 06-02 |
 | MIN_BATCH_SIZE = 2 | Per CONTEXT.md batching threshold | 06-02 |
+| useSyncExternalStore for browser APIs | Proper React 18+ pattern for visibility detection | 06-03 |
+| Dual IDs (viewerId + sessionId) for presence | Client generates both via sessionStorage | 06-03 |
 
 ### Pending Todos
 
@@ -120,6 +122,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-04
-Stopped at: Completed 06-02-PLAN.md
+Stopped at: Completed 06-03-PLAN.md
 Resume file: None
-Next: 06-03-PLAN.md (Integration & Wiring)
+Next: 06-04-PLAN.md (if exists) or Phase 6 complete
