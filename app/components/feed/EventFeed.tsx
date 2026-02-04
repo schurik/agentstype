@@ -2,11 +2,13 @@
 
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import { EventCard } from "./EventCard";
 import { NewEventsIndicator } from "./NewEventsIndicator";
 import { CurrentlyIndicator } from "./CurrentlyIndicator";
 import { SessionHeader } from "./SessionHeader";
+import { BatchedEventGroup } from "./BatchedEventGroup";
 import { useNewEventsIndicator } from "./hooks/useNewEventsIndicator";
 import { useExpandedEvents } from "@/app/hooks/useExpandedEvents";
 import { useProjectFilter } from "@/app/hooks/useProjectFilter";
@@ -14,6 +16,8 @@ import { useSessionFilter } from "@/app/hooks/useSessionFilter";
 import { useAgentFilter } from "@/app/hooks/useAgentFilter";
 import { useSessionStats } from "@/app/hooks/useSessionStats";
 import { useSessionStatus } from "@/app/hooks/useSessionStatus";
+import { useBatchedEvents } from "@/app/hooks/useBatchedEvents";
+import { useEventFilter } from "@/app/hooks/useEventFilter";
 
 /**
  * Loading skeleton for event cards during initial data fetch.
@@ -70,6 +74,10 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
     limit: 100,
   });
 
+  // Get filters from URL and transform events with batching
+  const [filters] = useEventFilter();
+  const batchedEvents = useBatchedEvents(events, filters);
+
   // Fetch session data to get accurate eventCount (not limited by listEvents pagination)
   const sessionData = useQuery(
     api.events.listSessionsForProject,
@@ -120,27 +128,40 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
   const { isExpanded, toggle, expandAll, collapseAll } = useExpandedEvents();
 
   // Expose expand/collapse handlers to parent (Header)
+  // Use batched event IDs for expand/collapse state
   useEffect(() => {
-    if (onExpandCollapseChange && events) {
+    if (onExpandCollapseChange && batchedEvents.length > 0) {
       onExpandCollapseChange({
-        expandAll: () => expandAll(events.map((e) => e._id)),
+        expandAll: () => expandAll(batchedEvents.map((b) => b.id)),
         collapseAll,
       });
     }
-  }, [onExpandCollapseChange, events, expandAll, collapseAll]);
+  }, [onExpandCollapseChange, batchedEvents, expandAll, collapseAll]);
 
   // Capture initial event IDs on first data load
+  // Track batched event IDs for correct animation of new batches
   useEffect(() => {
-    if (!hasInitialLoad && events !== undefined) {
-      setInitialEventIds(new Set(events.map((e) => e._id)));
+    if (!hasInitialLoad && events !== undefined && batchedEvents.length > 0) {
+      setInitialEventIds(new Set(batchedEvents.map((b) => b.id)));
       setHasInitialLoad(true);
     }
-  }, [events, hasInitialLoad]);
+  }, [events, batchedEvents, hasInitialLoad]);
 
-  // Track new events when user has scrolled down
-  const eventIds = events?.map((e) => e._id) ?? [];
+  // Track new events when user has scrolled down (using batched event IDs)
+  const batchedEventIds = batchedEvents.map((b) => b.id);
   const { containerRef, newEventCount, scrollToTop } =
-    useNewEventsIndicator(eventIds);
+    useNewEventsIndicator(batchedEventIds);
+
+  // Create ref for virtualization container
+  const parentRef = useRef<HTMLDivElement>(null);
+
+  // Set up virtualizer for smooth scrolling with 100+ events
+  const virtualizer = useVirtualizer({
+    count: batchedEvents.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 48, // Estimated collapsed height
+    overscan: 5, // Render 5 extra items for smooth scrolling
+  });
 
   // Track if we're actively receiving events (for CurrentlyIndicator pulse)
   const [isReceivingEvents, setIsReceivingEvents] = useState(false);
@@ -173,11 +194,15 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
   }
 
   // Empty state - different messages based on selection context
-  if (events.length === 0) {
+  if (events.length === 0 || batchedEvents.length === 0) {
     let emptyMessage = "No events yet.";
     let emptyHint = "Events will appear here when Claude Code is active.";
 
-    if (selectedSession) {
+    // Filtered but no matches
+    if (events.length > 0 && batchedEvents.length === 0 && filters.length > 0) {
+      emptyMessage = "No matching events.";
+      emptyHint = `No events match the current filter. Try adjusting your filters.`;
+    } else if (selectedSession) {
       emptyMessage = "No events in this session.";
       emptyHint = "This session may have just started.";
     } else if (selectedProject) {
@@ -224,20 +249,56 @@ export function EventFeed({ onExpandCollapseChange }: EventFeedProps) {
       {/* New events banner - above scroll container for visibility */}
       <NewEventsIndicator count={newEventCount} onClick={scrollToTop} />
 
-      {/* Event list */}
+      {/* Virtualized event list */}
       <div
-        ref={containerRef}
-        className="flex-1 overflow-y-auto px-4 py-2 space-y-1"
+        ref={(el) => {
+          // Share ref between containerRef (callback ref for new events indicator) and parentRef (for virtualizer)
+          containerRef(el);
+          (parentRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
+        }}
+        className="flex-1 overflow-y-auto px-4 py-2"
       >
-        {events.map((event) => (
-          <EventCard
-            key={event._id}
-            event={event}
-            isNew={hasInitialLoad && !initialEventIds.has(event._id)}
-            isExpanded={isExpanded(event._id)}
-            onToggle={() => toggle(event._id)}
-          />
-        ))}
+        <div
+          style={{
+            height: `${virtualizer.getTotalSize()}px`,
+            width: "100%",
+            position: "relative",
+          }}
+        >
+          {virtualizer.getVirtualItems().map((virtualRow) => {
+            const item = batchedEvents[virtualRow.index];
+            return (
+              <div
+                key={item.id}
+                data-index={virtualRow.index}
+                ref={virtualizer.measureElement}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  transform: `translateY(${virtualRow.start}px)`,
+                }}
+              >
+                {item.type === "batch" ? (
+                  <BatchedEventGroup
+                    tool={item.tool!}
+                    events={item.events}
+                    count={item.count}
+                    isNew={hasInitialLoad && !initialEventIds.has(item.id)}
+                  />
+                ) : (
+                  <EventCard
+                    event={item.events[0]}
+                    isNew={hasInitialLoad && !initialEventIds.has(item.id)}
+                    isExpanded={isExpanded(item.id)}
+                    onToggle={() => toggle(item.id)}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
