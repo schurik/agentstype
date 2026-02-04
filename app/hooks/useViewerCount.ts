@@ -8,9 +8,8 @@ import { usePageVisibility } from "./usePageVisibility";
 // Heartbeat interval in ms (10 seconds, matching presence TTL)
 const HEARTBEAT_INTERVAL = 10000;
 
-// Session storage keys for stable IDs
+// Session storage key for stable viewer ID
 const VIEWER_ID_KEY = "agentstype_viewer_id";
-const SESSION_ID_KEY = "agentstype_session_id";
 
 /**
  * Get or create a stable viewer ID for this browser session.
@@ -30,20 +29,12 @@ function getOrCreateViewerId(): string {
 }
 
 /**
- * Get or create a stable session ID for this browser session.
- * Required by @convex-dev/presence heartbeat mutation.
+ * Generate a unique session ID for a specific room.
+ * @convex-dev/presence requires sessionId to be unique per room/user combination.
+ * We generate a new sessionId each time the room changes.
  */
-function getOrCreateSessionId(): string {
-  if (typeof window === "undefined") {
-    return `session-ssr-${Math.random().toString(36).slice(2, 9)}`;
-  }
-
-  let sessionId = sessionStorage.getItem(SESSION_ID_KEY);
-  if (!sessionId) {
-    sessionId = `session-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
-    sessionStorage.setItem(SESSION_ID_KEY, sessionId);
-  }
-  return sessionId;
+function generateSessionId(): string {
+  return `session-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 }
 
 /**
@@ -61,8 +52,11 @@ export function useViewerCount(room: string | null | undefined): number {
   const isVisible = usePageVisibility();
   const heartbeat = useMutation(api.presence.heartbeat);
 
-  // Store stable IDs (generated once per browser session)
+  // Store stable viewer ID (generated once per browser session)
   const viewerIdRef = useRef<string | null>(null);
+  // Track the current room to detect changes
+  const currentRoomRef = useRef<string | null>(null);
+  // Session ID is unique per room/user - regenerated when room changes
   const sessionIdRef = useRef<string | null>(null);
 
   // Query viewers for the room
@@ -72,12 +66,15 @@ export function useViewerCount(room: string | null | undefined): number {
   useEffect(() => {
     if (!room || !isVisible) return;
 
-    // Get stable IDs (create once per session)
+    // Get stable viewer ID (create once per session)
     if (!viewerIdRef.current) {
       viewerIdRef.current = getOrCreateViewerId();
     }
-    if (!sessionIdRef.current) {
-      sessionIdRef.current = getOrCreateSessionId();
+
+    // Generate new sessionId when room changes (required by @convex-dev/presence)
+    if (currentRoomRef.current !== room) {
+      currentRoomRef.current = room;
+      sessionIdRef.current = generateSessionId();
     }
 
     const sendHeartbeat = () => {
