@@ -27,9 +27,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Live Feed - Performance
 
-- [ ] **PERF-01**: Event batching groups rapid events ("Read 15 files" expandable)
-- [ ] **PERF-02**: Filter dropdown allows filtering by event type
-- [ ] **PERF-03**: Virtualized list handles 100+ events without performance hit
+- [x] **PERF-01**: Event batching groups rapid events ("Read 15 files" expandable)
+- [x] **PERF-02**: Filter dropdown allows filtering by event type
+- [x] **PERF-03**: Virtualized list handles 100+ events without performance hit
 
 ### Live Feed - Session Features
 
@@ -40,7 +40,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Live Feed - Social
 
-- [ ] **SOCL-01**: Viewer count shows how many people are watching
+- [x] **SOCL-01**: Viewer count shows how many people are watching
 
 ### Live Feed - Project Filtering
 
@@ -51,11 +51,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Event Capture System
 
-- [ ] **CAPT-01**: Claude Code hook captures all events (PreToolUse, PostToolUse, SessionStart, SessionEnd, etc.)
-- [ ] **CAPT-02**: Hook extracts cwd to identify project
-- [ ] **CAPT-03**: Secrets filtering removes sensitive info before push (CRITICAL)
-- [ ] **CAPT-04**: Events pushed to Convex HTTP endpoint
-- [ ] **CAPT-05**: Convex broadcasts events to connected clients in real-time
+- [x] **CAPT-01**: Claude Code hook captures all events (PreToolUse, PostToolUse, SessionStart, SessionEnd, etc.)
+- [x] **CAPT-02**: Hook extracts cwd to identify project
+- [x] **CAPT-03**: Secrets filtering removes sensitive info before push (CRITICAL)
+- [x] **CAPT-04**: Events pushed to Convex HTTP endpoint
+- [x] **CAPT-05**: Convex broadcasts events to connected clients in real-time
 
 ### Pages - Home
 
@@ -167,10 +167,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ABOUT-02 | Phase 5 | Complete |
 | ABOUT-03 | Phase 5 | Complete |
 | DESGN-06 | Phase 5 | Complete |
-| PERF-01 | Phase 6 | Pending |
-| PERF-02 | Phase 6 | Pending |
-| PERF-03 | Phase 6 | Pending |
-| SOCL-01 | Phase 6 | Pending |
+| PERF-01 | Phase 6 | Complete |
+| PERF-02 | Phase 6 | Complete |
+| PERF-03 | Phase 6 | Complete |
+| SOCL-01 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 44 total

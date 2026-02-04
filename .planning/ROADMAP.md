@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Layered Display & Projects** - Progressive disclosure and project filtering
 - [x] **Phase 4: Session Features** - Session boundaries, stats, and agent hierarchy
 - [x] **Phase 5: Pages & Navigation** - Home, Live Feed, and About pages with full design system
-- [ ] **Phase 6: Performance & Scale** - Event batching, virtualization, and viewer count
+- [x] **Phase 6: Performance & Scale** - Event batching, virtualization, and viewer count
 
 ## Phase Details
 
@@ -120,10 +120,10 @@ Plans:
 **Plans**: 4 plans (Wave 1 -> Wave 2 -> Wave 3)
 
 Plans:
-- [ ] 06-01-PLAN.md — Dependencies and Convex presence setup (@tanstack/react-virtual, @convex-dev/presence, convex.config.ts, presence.ts)
-- [ ] 06-02-PLAN.md — Event batching and filtering hooks (useBatchedEvents, useEventFilter, FilterBar component)
-- [ ] 06-03-PLAN.md — Viewer count and batch display (useViewerCount, usePageVisibility, BatchedEventGroup component)
-- [ ] 06-04-PLAN.md — Virtualized feed integration and verification (EventFeed virtualization, Header viewer count, visual verification)
+- [x] 06-01-PLAN.md — Dependencies and Convex presence setup (@tanstack/react-virtual, @convex-dev/presence, convex.config.ts, presence.ts)
+- [x] 06-02-PLAN.md — Event batching and filtering hooks (useBatchedEvents, useEventFilter, FilterBar component)
+- [x] 06-03-PLAN.md — Viewer count and batch display (useViewerCount, usePageVisibility, BatchedEventGroup component)
+- [x] 06-04-PLAN.md — Virtualized feed integration and verification (EventFeed virtualization, Header viewer count, visual verification)
 
 ## Progress
 
@@ -137,7 +137,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Layered Display & Projects | 4/4 | Complete | 2026-02-03 |
 | 4. Session Features | 5/5 | Complete | 2026-02-03 |
 | 5. Pages & Navigation | 3/3 | Complete | 2026-02-03 |
-| 6. Performance & Scale | 0/4 | Not started | - |
+| 6. Performance & Scale | 4/4 | Complete | 2026-02-04 |
 
 ---
 *Roadmap created: 2025-01-31*
