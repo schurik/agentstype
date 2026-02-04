@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { Header } from "@/app/components/ui/Header";
 import { EventFeed } from "@/app/components/feed/EventFeed";
 import { ProjectSidebar } from "@/app/components/sidebar/ProjectSidebar";
+import { FilterBar } from "@/app/components/feed/FilterBar";
 import { useProjectFilter } from "@/app/hooks/useProjectFilter";
 import { useSessionFilter } from "@/app/hooks/useSessionFilter";
 
@@ -45,6 +46,12 @@ export function LiveFeedContent() {
   // Show guidance when project selected but no session
   const showSessionHint = selectedProject && !selectedSession;
 
+  // Compute viewer room - use session if selected, otherwise project
+  // This scopes viewer count to the most specific selection
+  const viewerRoom = selectedSession
+    ? `${selectedProject}:${selectedSession}`
+    : selectedProject;
+
   return (
     <div className="flex h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)] bg-background">
       {/* Project sidebar */}
@@ -55,7 +62,10 @@ export function LiveFeedContent() {
         <Header
           onExpandAll={expandCollapseHandlers?.expandAll}
           onCollapseAll={expandCollapseHandlers?.collapseAll}
+          viewerRoom={viewerRoom}
         />
+        {/* FilterBar below header for event type filtering */}
+        <FilterBar />
         <main className="flex-1 overflow-hidden flex flex-col">
           {/* Session selection hint */}
           {showSessionHint && (
