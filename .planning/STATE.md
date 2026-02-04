@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2025-01-31)
 
 **Core value:** The live feed - real-time Claude Code sessions with layered display (summary + technical depth)
-**Current focus:** Phase 5 complete - Ready for Phase 6
+**Current focus:** Phase 6 in progress - Performance & Scale
 
 ## Current Position
 
-Phase: 5 of 6 (Pages & Navigation) - COMPLETE
-Plan: 3 of 3 in current phase
-Status: Phase complete, verified
-Last activity: 2026-02-03 - Phase 5 verified and complete
+Phase: 6 of 6 (Performance & Scale) - IN PROGRESS
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-04 - Completed 06-01-PLAN.md
 
-Progress: [██████████████░] 83%
+Progress: [██████████████░░] 86%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
+- Total plans completed: 18
 - Average duration: 2.9 min
-- Total execution time: 49 min
+- Total execution time: 52 min
 
 **By Phase:**
 
@@ -32,9 +32,10 @@ Progress: [██████████████░] 83%
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
 | 04-session-features | 5 | 14 min | 2.8 min |
 | 05-pages-navigation | 3 | 8 min | 2.7 min |
+| 06-performance-scale | 1 | 3 min | 3.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-05 (3 min), 05-01 (3 min), 05-02 (2 min), 05-03 (3 min)
+- Last 5 plans: 05-01 (3 min), 05-02 (2 min), 05-03 (3 min), 06-01 (3 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -100,6 +101,9 @@ Recent decisions affecting current work:
 | Grid layout with sticky sidebar | Social links in sticky sidebar on desktop | 05-03 |
 | Placeholder pattern for customization | Bio contains instructive placeholder text | 05-03 |
 | Server Components for static pages | No client state needed for About page | 05-03 |
+| heartbeat requires sessionId parameter | Per @convex-dev/presence API, sessionId is required | 06-01 |
+| listViewers uses listRoom with onlineOnly | listRoom takes roomId directly, list() requires token | 06-01 |
+| 10 second heartbeat interval | Presence auto-removes at 2.5x interval (25s stale) | 06-01 |
 
 ### Pending Todos
 
@@ -111,7 +115,7 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-03
-Stopped at: Phase 5 complete
+Last session: 2026-02-04
+Stopped at: Completed 06-01-PLAN.md
 Resume file: None
-Next: Phase 06 - Performance & Scale
+Next: 06-02-PLAN.md (Virtualized Event Feed)
