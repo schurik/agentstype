@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 
 /**
  * Track whether the current tab is visible/active.
@@ -9,21 +9,23 @@ import { useState, useEffect } from "react";
  * Per CONTEXT.md: "Watching" = active tab only
  */
 export function usePageVisibility(): boolean {
-  const [isVisible, setIsVisible] = useState(true);
+  return useSyncExternalStore(
+    subscribeToVisibilityChange,
+    getVisibilitySnapshot,
+    getServerSnapshot
+  );
+}
 
-  useEffect(() => {
-    // Initial state
-    setIsVisible(document.visibilityState === "visible");
+function subscribeToVisibilityChange(callback: () => void): () => void {
+  document.addEventListener("visibilitychange", callback);
+  return () => document.removeEventListener("visibilitychange", callback);
+}
 
-    const handleVisibilityChange = () => {
-      setIsVisible(document.visibilityState === "visible");
-    };
+function getVisibilitySnapshot(): boolean {
+  return document.visibilityState === "visible";
+}
 
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
-
-  return isVisible;
+function getServerSnapshot(): boolean {
+  // During SSR, assume visible (optimistic)
+  return true;
 }
