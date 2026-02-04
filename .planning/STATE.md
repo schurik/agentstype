@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2025-01-31)
 
 ## Current Position
 
-Phase: 6 of 6 (Performance & Scale) - IN PROGRESS
-Plan: 3 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-04 - Completed 06-03-PLAN.md
+Phase: 6 of 6 (Performance & Scale) - COMPLETE
+Plan: 4 of 4 in current phase
+Status: Phase complete
+Last activity: 2026-02-04 - Completed 06-04-PLAN.md
 
-Progress: [██████████████████] 95%
+Progress: [████████████████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 20
-- Average duration: 2.9 min
-- Total execution time: 58 min
+- Total plans completed: 21
+- Average duration: 3.0 min
+- Total execution time: 64 min
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [██████████████████] 95%
 | 03-layered-display-projects | 4 | 12 min | 3.0 min |
 | 04-session-features | 5 | 14 min | 2.8 min |
 | 05-pages-navigation | 3 | 8 min | 2.7 min |
-| 06-performance-scale | 3 | 9 min | 3.0 min |
+| 06-performance-scale | 4 | 15 min | 3.8 min |
 
 **Recent Trend:**
-- Last 5 plans: 05-03 (3 min), 06-01 (3 min), 06-02 (3 min), 06-03 (3 min)
+- Last 5 plans: 06-01 (3 min), 06-02 (3 min), 06-03 (3 min), 06-04 (6 min)
 - Trend: Consistent execution
 
 *Updated after each plan completion*
@@ -110,6 +110,10 @@ Recent decisions affecting current work:
 | MIN_BATCH_SIZE = 2 | Per CONTEXT.md batching threshold | 06-02 |
 | useSyncExternalStore for browser APIs | Proper React 18+ pattern for visibility detection | 06-03 |
 | Dual IDs (viewerId + sessionId) for presence | Client generates both via sessionStorage | 06-03 |
+| Ref merging for callback and mutable refs | Invoke callback ref, assign mutable ref in same function | 06-04 |
+| Track batched event IDs for animation | Use batch IDs not raw event IDs for new detection | 06-04 |
+| Viewer room scopes to session or project | Session takes precedence when selected | 06-04 |
+| Regenerate sessionId when room changes | Required by @convex-dev/presence for correct counting | 06-04 |
 
 ### Pending Todos
 
@@ -122,6 +126,6 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-04
-Stopped at: Completed 06-03-PLAN.md
+Stopped at: Completed 06-04-PLAN.md
 Resume file: None
-Next: 06-04-PLAN.md (if exists) or Phase 6 complete
+Next: PROJECT COMPLETE - All 6 phases finished
